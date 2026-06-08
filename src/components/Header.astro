@@ -17,7 +17,7 @@ const isActive = (href: string) =>
 <header class="site-header">
   <div class="container site-header__inner">
     <a href="/" class="brand" aria-label="Pudgilly Riders – Startseite">
-      <img class="brand__mark" src="/logo.png" alt="" width="52" height="52" />
+      <img class="brand__mark" src="/logo.png" alt="" width="36" height="48" />
       <span class="brand__text">
         <strong>Pudgilly</strong>
         <span>Riders</span>
@@ -78,14 +78,9 @@ const isActive = (href: string) =>
   }
 
   .brand__mark {
-    width: 52px;
-    height: 52px;
+    height: 48px;
+    width: auto;
     display: block;
-    object-fit: contain;
-    background: #fff;
-    padding: 3px;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
   }
 
   .brand__text {
