@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
+import { site } from '../data/site';
 
 const contact = [
-  { icon: '✉️', label: 'E-Mail', value: 'info@pudgilly.ch', href: 'mailto:info@pudgilly.ch' },
-  { icon: '📞', label: 'Telefon', value: '+41 00 000 00 00', href: 'tel:+410000000000' },
-  { icon: '📍', label: 'Clubhaus', value: 'Musterstrasse 1, Schweiz', href: null },
+  { icon: '✉️', label: 'E-Mail', value: site.email, href: `mailto:${site.email}` },
+  { icon: '📞', label: 'Telefon', value: site.phone, href: `tel:${site.phone.replace(/\s+/g, '')}` },
+  { icon: '📍', label: 'Clubhaus', value: site.address, href: null },
 ];
 ---
 

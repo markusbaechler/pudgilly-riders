@@ -1,0 +1,61 @@
+# Konfiguration für Pages CMS (https://pagescms.org)
+# Definiert, welche Inhalte über die CMS-Oberfläche bearbeitet werden können.
+
+media:
+  input: public/galerie
+  output: /galerie
+
+content:
+  - name: tours
+    label: Touren
+    type: file
+    path: src/data/tours.json
+    list: true
+    fields:
+      - { name: title, label: Titel, type: string }
+      - { name: region, label: Region, type: string }
+      - { name: distance, label: Distanz, type: string }
+      - { name: duration, label: Dauer, type: string }
+      - name: level
+        label: Level
+        type: select
+        options:
+          values: [Einsteiger, Fortgeschritten, Profi]
+      - { name: description, label: Beschreibung, type: text }
+      - { name: highlights, label: Höhepunkte, type: string, list: true }
+
+  - name: events
+    label: Events
+    type: file
+    path: src/data/events.json
+    list: true
+    fields:
+      - name: date
+        label: Datum
+        type: date
+        options:
+          format: yyyy-MM-dd
+      - { name: title, label: Titel, type: string }
+      - { name: location, label: Ort, type: string }
+      - name: type
+        label: Art
+        type: select
+        options:
+          values: [Ausfahrt, Treffen, Fest, Kurs]
+      - { name: description, label: Beschreibung, type: text }
+
+  - name: site
+    label: Einstellungen
+    type: file
+    path: src/data/site.json
+    fields:
+      - { name: email, label: E-Mail, type: string }
+      - { name: phone, label: Telefon, type: string }
+      - { name: address, label: Adresse, type: string }
+      - name: stats
+        label: Kennzahlen (Startseite)
+        type: object
+        fields:
+          - { name: members, label: Mitglieder, type: number }
+          - { name: toursPerYear, label: Touren pro Jahr, type: number }
+          - { name: founded, label: Gegründet (Jahr), type: number }

@@ -2,14 +2,15 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { tours } from '../data/tours';
 import { events } from '../data/events';
+import { site } from '../data/site';
 
 const topTours = tours.slice(0, 3);
 const nextEvents = events.slice(0, 3);
 
 const stats = [
-  { value: '48', label: 'Mitglieder' },
-  { value: '12', label: 'Touren pro Jahr' },
-  { value: '2009', label: 'Gegründet' },
+  { value: String(site.stats.members), label: 'Mitglieder' },
+  { value: String(site.stats.toursPerYear), label: 'Touren pro Jahr' },
+  { value: String(site.stats.founded), label: 'Gegründet' },
   { value: '∞', label: 'Kilometer' },
 ];
 ---

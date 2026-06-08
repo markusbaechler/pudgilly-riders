@@ -1,0 +1,10 @@
+{
+  "email": "info@pudgilly.ch",
+  "phone": "+41 00 000 00 00",
+  "address": "Musterstrasse 1, Schweiz",
+  "stats": {
+    "members": 48,
+    "toursPerYear": 12,
+    "founded": 2009
+  }
+}
