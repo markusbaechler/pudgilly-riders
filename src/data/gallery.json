@@ -18,28 +18,15 @@
     "hue": 150
   },
   {
-    "caption": "Schraubertag im Clubhaus",
-    "tag": "Werkstatt",
+    "image": "/galerie/2019_supermoto.jpg",
+    "caption": "Indoor Supermoto",
+    "tag": "Wintertraining 2019",
     "hue": 30
   },
   {
-    "caption": "Sonnenuntergang Jura",
-    "tag": "Feierabendrunde",
+    "image": "/galerie/elsass.jpg",
+    "caption": "Irgendwo in den Bergen",
+    "tag": "Pudgillies on tour",
     "hue": 280
-  },
-  {
-    "caption": "Sommerfest 2025",
-    "tag": "Clubleben",
-    "hue": 350
-  },
-  {
-    "caption": "Pause am Lago Maggiore",
-    "tag": "Tessin",
-    "hue": 190
-  },
-  {
-    "caption": "Frühstart in die Saison",
-    "tag": "Saisoneröffnung",
-    "hue": 90
   }
 ]
