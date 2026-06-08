@@ -40,5 +40,25 @@
     "location": "Tessin",
     "type": "Ausfahrt",
     "description": "Letzte gemeinsame Runde der Saison. Treffpunkt voraussichtlich schon am 25.09. - Infos folgen via WhatsApp."
+  },
+  {
+    "date": "2026-09-22",
+    "title": "Vorstandssitzung",
+    "location": "noch offen",
+    "type": "Treffen"
+  },
+  {
+    "date": "2026-11-06",
+    "title": "Generalversammlung",
+    "location": "noch offen",
+    "type": "Treffen",
+    "description": "Einladung folgt per WhatsApp"
+  },
+  {
+    "date": "2026-11-28",
+    "title": "Papiersammeln",
+    "location": "Hüttikon",
+    "type": "Treffen",
+    "description": "Der inoffizielle Saisonabschluss mit Glühwein und Wurst vom Grill im Anschluss."
   }
 ]
