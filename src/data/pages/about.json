@@ -8,7 +8,7 @@
     "eyebrow": "Unsere Geschichte",
     "heading": "Aus einer Tour wurde ein Club",
     "paragraphs": [
-      "Angefangen hat alles 2009 mit sechs Freunden, einer Landkarte und dem Wunsch, die schönsten Pässe der Schweiz gemeinsam zu fahren. Aus der spontanen Ausfahrt wurde eine feste Truppe – und schliesslich der Motorradclub Pudgilly Riders.",
+      "1991 entstand im „Berger“ in Hüttikon – aus einer spontanen Bieridee – der Grundstein für unseren Club. Damals waren wir eine Horde junger Wilder auf 125ern, voller Energie und Abenteuerlust. Aus dieser Anfangszeit ist über die Jahre eine starke Gemeinschaft gewachsen, die bis heute auf zwei Rädern unterwegs ist.",
       "Heute sind wir ein eingespieltes Team aus Fahrerinnen und Fahrern jeden Alters und mit den unterschiedlichsten Maschinen. Was uns eint, ist die Freude an gemeinsamen Kilometern und gelebter Kameradschaft."
     ]
   },
@@ -16,9 +16,21 @@
     "eyebrow": "Was uns wichtig ist",
     "heading": "Unsere Werte",
     "items": [
-      { "icon": "🛡️", "title": "Sicherheit zuerst", "text": "Vorausschauend fahren, aufeinander achten und regelmässig trainieren." },
-      { "icon": "🌍", "title": "Offenheit", "text": "Jede Marke, jedes Modell, jedes Level ist willkommen. Hauptsache zwei Räder." },
-      { "icon": "♻️", "title": "Respekt", "text": "Gegenüber der Natur, anderen Verkehrsteilnehmern und untereinander." }
+      {
+        "icon": "🛡️",
+        "title": "Sicherheit zuerst",
+        "text": "Vorausschauend fahren, aufeinander achten und regelmässig trainieren."
+      },
+      {
+        "icon": "🌍",
+        "title": "Offenheit",
+        "text": "Jede Marke, jedes Modell, jedes Level ist willkommen. Hauptsache zwei Räder."
+      },
+      {
+        "icon": "♻️",
+        "title": "Respekt",
+        "text": "Gegenüber der Natur, anderen Verkehrsteilnehmern und untereinander."
+      }
     ]
   },
   "timelineHeading": {
