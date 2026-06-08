@@ -7,7 +7,7 @@ const year = new Date().getFullYear();
 <footer class="site-footer">
   <div class="container site-footer__inner">
     <div class="site-footer__brand">
-      <span class="brand__mark" aria-hidden="true">🏍️</span>
+      <img class="brand__mark" src="/logo.png" alt="" width="46" height="58" />
       <div>
         <strong>Pudgilly Riders</strong>
         <p>{site.footerTagline}</p>
@@ -64,7 +64,9 @@ const year = new Date().getFullYear();
   }
 
   .site-footer__brand .brand__mark {
-    font-size: 2rem;
+    width: 46px;
+    height: auto;
+    display: block;
   }
 
   .site-footer__brand strong {
