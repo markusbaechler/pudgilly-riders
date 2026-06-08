@@ -274,4 +274,4 @@ content:
         fields:
           - { name: eyebrow, label: Kleiner Text, type: string }
           - { name: heading, label: Überschrift, type: string }
-      - { name: formAction, label: Formular-Ziel (URL), type: string }
+      - { name: web3formsKey, label: Web3Forms Access Key (von web3forms.com), type: string }

@@ -48,17 +48,23 @@ const contact = [
         </p>
       </aside>
 
-      <!-- Formular -->
+      <!-- Formular (Web3Forms – kostenloser Versand ohne eigenen Server) -->
       <form
         class="contact-form"
-        action={page.formAction}
+        action="https://api.web3forms.com/submit"
         method="POST"
       >
-        <p class="contact-form__note">
-          Hinweis: Das Formular ist als statisches Beispiel angelegt. Trage bei
-          <code>action</code> deinen Formular-Dienst ein (z.&nbsp;B. Formspree,
-          Web3Forms) oder ersetze es durch das Kontaktformular von green.ch.
-        </p>
+        <!-- Kostenloser Access Key von web3forms.com (im CMS unter „Seite · Kontakt" pflegbar) -->
+        <input type="hidden" name="access_key" value={page.web3formsKey} />
+        <input type="hidden" name="from_name" value="Pudgilly Riders Website" />
+        <!-- Honeypot gegen Spam – für Menschen unsichtbar -->
+        <input
+          type="checkbox"
+          name="botcheck"
+          class="visually-hidden"
+          tabindex="-1"
+          autocomplete="off"
+        />
 
         <div class="field">
           <label for="name">Name</label>
