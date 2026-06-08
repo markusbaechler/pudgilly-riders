@@ -19,6 +19,20 @@ const stats = [
 <BaseLayout title="Start" description="Pudgilly Riders – Motorradclub für gemeinsame Touren, Events und gelebte Töff-Leidenschaft.">
   <!-- Hero -->
   <section class="hero">
+    <video
+      class="hero__video"
+      autoplay
+      loop
+      muted
+      playsinline
+      preload="metadata"
+      poster="/hero/hero.jpg"
+      aria-hidden="true"
+    >
+      <source src="/hero/hero.mp4" type="video/mp4" />
+    </video>
+    <div class="hero__scrim" aria-hidden="true"></div>
+
     <div class="container hero__inner">
       <span class="eyebrow">{home.hero.eyebrow}</span>
       <h1>{home.hero.titleLine1}<br />{home.hero.titleLine2}</h1>
@@ -28,7 +42,6 @@ const stats = [
         <a href={home.hero.secondaryCtaHref} class="btn btn--ghost">{home.hero.secondaryCtaLabel}</a>
       </div>
     </div>
-    <div class="hero__overlay" aria-hidden="true"></div>
   </section>
 
   <!-- Stats -->
@@ -157,20 +170,43 @@ const stats = [
   .hero {
     position: relative;
     overflow: hidden;
+    /* Standbild als Basis – sichtbar, solange das Video lädt oder nicht abspielt */
     background:
-      radial-gradient(circle at 75% 30%, rgba(255, 107, 0, 0.22), transparent 50%),
-      linear-gradient(160deg, #16161a 0%, #0d0d0f 60%);
+      linear-gradient(160deg, #16161a 0%, #0d0d0f 60%),
+      url('/hero/hero.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .hero__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    /* Abdunklung für gute Lesbarkeit des Textes */
+    background:
+      linear-gradient(90deg, rgba(13, 13, 15, 0.85) 0%, rgba(13, 13, 15, 0.45) 55%, rgba(13, 13, 15, 0.2) 100%),
+      linear-gradient(180deg, rgba(13, 13, 15, 0.1) 60%, rgba(13, 13, 15, 0.75) 100%);
   }
 
   .hero__inner {
     position: relative;
     z-index: 2;
-    padding-block: clamp(4rem, 12vw, 9rem);
+    padding-block: clamp(5rem, 14vw, 11rem);
     max-width: 760px;
   }
 
   .hero h1 {
     margin-bottom: 1.5rem;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
   }
 
   .hero__actions {
@@ -180,18 +216,11 @@ const stats = [
     margin-top: 2rem;
   }
 
-  .hero__overlay {
-    position: absolute;
-    inset: 0;
-    background-image:
-      repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 78px,
-        rgba(255, 255, 255, 0.02) 78px,
-        rgba(255, 255, 255, 0.02) 80px
-      );
-    z-index: 1;
+  /* Animationen reduzieren: Video ausblenden, Standbild bleibt sichtbar */
+  @media (prefers-reduced-motion: reduce) {
+    .hero__video {
+      display: none;
+    }
   }
 
   .stats {
