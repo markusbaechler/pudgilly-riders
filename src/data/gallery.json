@@ -1,10 +1,45 @@
 [
-  { "image": "/galerie/2017_misano.jpg", "caption": "Rennstrecken-Feeling in Misano", "tag": "Misano 2017", "hue": 18 },
-  { "image": "/galerie/2022_sardinien.jpg", "caption": "Küstentour auf Sardinien", "tag": "Sardinien 2022", "hue": 200 },
-  { "caption": "Kurvenrausch im Tessin", "tag": "Seenrunde", "hue": 150 },
-  { "caption": "Schraubertag im Clubhaus", "tag": "Werkstatt", "hue": 30 },
-  { "caption": "Sonnenuntergang Jura", "tag": "Feierabendrunde", "hue": 280 },
-  { "caption": "Sommerfest 2025", "tag": "Clubleben", "hue": 350 },
-  { "caption": "Pause am Lago Maggiore", "tag": "Tessin", "hue": 190 },
-  { "caption": "Frühstart in die Saison", "tag": "Saisoneröffnung", "hue": 90 }
+  {
+    "image": "/galerie/2017_misano.jpg",
+    "caption": "Rennstrecken-Feeling in Misano",
+    "tag": "Misano 2017",
+    "hue": 18
+  },
+  {
+    "image": "/galerie/2022_sardinien.jpg",
+    "caption": "Kurvenfeeling auf Korsika",
+    "tag": "Sardinien 2022",
+    "hue": 200
+  },
+  {
+    "image": "/galerie/2024_korsika.jpg",
+    "caption": "Küstentour auf Korsika",
+    "tag": "Korsika 2024",
+    "hue": 150
+  },
+  {
+    "caption": "Schraubertag im Clubhaus",
+    "tag": "Werkstatt",
+    "hue": 30
+  },
+  {
+    "caption": "Sonnenuntergang Jura",
+    "tag": "Feierabendrunde",
+    "hue": 280
+  },
+  {
+    "caption": "Sommerfest 2025",
+    "tag": "Clubleben",
+    "hue": 350
+  },
+  {
+    "caption": "Pause am Lago Maggiore",
+    "tag": "Tessin",
+    "hue": 190
+  },
+  {
+    "caption": "Frühstart in die Saison",
+    "tag": "Saisoneröffnung",
+    "hue": 90
+  }
 ]
