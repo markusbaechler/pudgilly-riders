@@ -4,7 +4,7 @@
     "titleLine1": "Pudgilly",
     "titleLine2": "Riders",
     "lead": "Zwei Räder, eine Leidenschaft. Wir sind eine Gruppe von Töfffahrerinnen und Töfffahrern, die das Leben auf der Strasse teilen – Pässe, Kurven und Kameradschaft inklusive.",
-    "primaryCtaLabel": "Unsere Touren →",
+    "primaryCtaLabel": "Tourenplaner →",
     "primaryCtaHref": "/touren/",
     "secondaryCtaLabel": "Mitfahren",
     "secondaryCtaHref": "/kontakt/"
@@ -39,10 +39,6 @@
         "text": "Schraubertage, Fahrtechnik und Tourentipps – im Club lernt jeder von jedem und wird Schritt für Schritt sicherer."
       }
     ]
-  },
-  "toursPreview": {
-    "eyebrow": "Unterwegs",
-    "heading": "Beliebte Touren"
   },
   "eventsPreview": {
     "eyebrow": "Termine",
