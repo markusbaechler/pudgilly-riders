@@ -1,6 +1,6 @@
 [
-  { "caption": "Sustenpass im Morgenlicht", "tag": "Tour 2025", "hue": 18 },
-  { "caption": "Gruppenfoto am Furka", "tag": "Drei-Pässe-Fahrt", "hue": 200 },
+  { "image": "/galerie/2017_misano.jpg", "caption": "Rennstrecken-Feeling in Misano", "tag": "Misano 2017", "hue": 18 },
+  { "image": "/galerie/2022_sardinien.jpg", "caption": "Küstentour auf Sardinien", "tag": "Sardinien 2022", "hue": 200 },
   { "caption": "Kurvenrausch im Tessin", "tag": "Seenrunde", "hue": 150 },
   { "caption": "Schraubertag im Clubhaus", "tag": "Werkstatt", "hue": 30 },
   { "caption": "Sonnenuntergang Jura", "tag": "Feierabendrunde", "hue": 280 },
