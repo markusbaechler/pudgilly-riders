@@ -1,6 +1,31 @@
 [
-  { "name": "Marco \"Pudge\" Brunner", "role": "Präsident", "bike": "BMW R 1250 GS", "emoji": "🧔" },
-  { "name": "Sandra Keller", "role": "Tourenleiterin", "bike": "Yamaha Ténéré 700", "emoji": "👩" },
-  { "name": "Tobias Frei", "role": "Kassier", "bike": "Honda CB650R", "emoji": "🧑" },
-  { "name": "Nadine Roth", "role": "Events & Kommunikation", "bike": "Triumph Street Triple", "emoji": "👩‍🦰" }
+  {
+    "name": "Markus Baechler",
+    "role": "Präsident",
+    "bike": "Ducati Scrambler 1100 Sport Pro",
+    "emoji": "🧔"
+  },
+  {
+    "name": "Marco Filli",
+    "role": "Tourenchef",
+    "bike": "Husqvarna Norden 901",
+    "emoji": "👩"
+  },
+  {
+    "name": "Andy Moser",
+    "role": "Kassier",
+    "bike": "Honda CB650R",
+    "emoji": "🧑"
+  },
+  {
+    "name": "Andrin Furrer",
+    "role": "Aktuar",
+    "bike": "Triumph Speed Triple R",
+    "emoji": "👩‍🦰"
+  },
+  {
+    "name": "Matthias Meier",
+    "role": "Kassier",
+    "bike": "Aprilia Touareg"
+  }
 ]
