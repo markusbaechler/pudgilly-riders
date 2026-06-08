@@ -54,10 +54,14 @@ content:
     path: src/data/gallery.json
     list: true
     fields:
+      - name: image
+        label: Bild
+        type: image
+        description: Bild hochladen oder auswählen. Ohne Bild wird eine farbige Kachel mit Motorrad-Symbol angezeigt.
       - { name: caption, label: Bildunterschrift, type: string }
       - { name: tag, label: Schlagwort, type: string }
       - name: hue
-        label: Farbton (0–360)
+        label: Farbton (0–360, nur ohne Bild relevant)
         type: number
         options: { min: 0, max: 360 }
 
