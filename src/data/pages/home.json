@@ -1,0 +1,57 @@
+{
+  "hero": {
+    "eyebrow": "Motorradclub seit 2009",
+    "titleLine1": "Pudgilly",
+    "titleLine2": "Riders",
+    "lead": "Zwei Räder, eine Leidenschaft. Wir sind eine Gruppe von Töfffahrerinnen und Töfffahrern, die das Leben auf der Strasse teilen – Pässe, Kurven und Kameradschaft inklusive.",
+    "primaryCtaLabel": "Unsere Touren →",
+    "primaryCtaHref": "/touren/",
+    "secondaryCtaLabel": "Mitfahren",
+    "secondaryCtaHref": "/kontakt/"
+  },
+  "intro": {
+    "eyebrow": "Willkommen",
+    "heading": "Die Strasse ruft – wir antworten gemeinsam",
+    "paragraphs": [
+      "Ob frisch gebackene A-Fahrerin oder gestandener Tourenprofi: Bei den Pudgilly Riders zählt nicht die Maschine, sondern die Freude am Fahren. Wir organisieren regelmässige Ausfahrten, helfen einander in der Garage und feiern die Saison so, wie es sich gehört.",
+      "Kein Vereinsmeiertum, dafür echte Kameradschaft, sichere Touren und jede Menge Kurven. Schwing dich auf und fahr ein Stück mit uns."
+    ],
+    "linkLabel": "Mehr über uns →",
+    "linkHref": "/ueber-uns/"
+  },
+  "values": {
+    "eyebrow": "Wofür wir stehen",
+    "heading": "Mehr als nur fahren",
+    "items": [
+      {
+        "icon": "🛣️",
+        "title": "Gemeinsame Touren",
+        "text": "Von der entspannten Feierabendrunde bis zur mehrtägigen Alpentour – geplant, sicher und mit dem passenden Tempo für jede Gruppe."
+      },
+      {
+        "icon": "🤝",
+        "title": "Kameradschaft",
+        "text": "Wir fahren zusammen los und kommen zusammen an. Hilfsbereitschaft und Respekt sind bei uns keine leeren Worte."
+      },
+      {
+        "icon": "🔧",
+        "title": "Wissen teilen",
+        "text": "Schraubertage, Fahrtechnik und Tourentipps – im Club lernt jeder von jedem und wird Schritt für Schritt sicherer."
+      }
+    ]
+  },
+  "toursPreview": {
+    "eyebrow": "Unterwegs",
+    "heading": "Beliebte Touren"
+  },
+  "eventsPreview": {
+    "eyebrow": "Termine",
+    "heading": "Nächste Events"
+  },
+  "cta": {
+    "heading": "Bereit für die nächste Ausfahrt?",
+    "lead": "Komm zu einem Stammtisch vorbei oder schreib uns – wir freuen uns auf neue Gesichter im Club.",
+    "buttonLabel": "Jetzt Kontakt aufnehmen →",
+    "buttonHref": "/kontakt/"
+  }
+}

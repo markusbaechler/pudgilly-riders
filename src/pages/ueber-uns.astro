@@ -1,48 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
-
-const team = [
-  { name: 'Marco "Pudge" Brunner', role: 'Präsident', bike: 'BMW R 1250 GS', emoji: '🧔' },
-  { name: 'Sandra Keller', role: 'Tourenleiterin', bike: 'Yamaha Ténéré 700', emoji: '👩' },
-  { name: 'Tobias Frei', role: 'Kassier', bike: 'Honda CB650R', emoji: '🧑' },
-  { name: 'Nadine Roth', role: 'Events & Kommunikation', bike: 'Triumph Street Triple', emoji: '👩‍🦰' },
-];
-
-const timeline = [
-  { year: '2009', text: 'Gründung durch sechs Freunde nach einer spontanen Alpentour.' },
-  { year: '2013', text: 'Einweihung des eigenen Clubhauses mit Werkstatt.' },
-  { year: '2018', text: 'Erste mehrtägige Auslandstour – die Dolomiten rufen.' },
-  { year: '2024', text: 'Über 45 aktive Mitglieder und ein volles Tourenprogramm.' },
-];
+import about from '../data/pages/about.json';
+import team from '../data/team.json';
+import timeline from '../data/timeline.json';
 ---
 
 <BaseLayout title="Über uns" description="Die Geschichte, Werte und Menschen hinter dem Motorradclub Pudgilly Riders.">
   <PageHero
-    eyebrow="Über uns"
-    title="Wer wir sind"
-    text="Eine bunt gemischte Truppe mit einem gemeinsamen Nenner: der Liebe zum Motorrad."
+    eyebrow={about.hero.eyebrow}
+    title={about.hero.title}
+    text={about.hero.text}
   />
 
   <section class="section">
     <div class="container">
       <div class="intro">
         <div>
-          <span class="eyebrow">Unsere Geschichte</span>
-          <h2>Aus einer Tour wurde ein Club</h2>
+          <span class="eyebrow">{about.history.eyebrow}</span>
+          <h2>{about.history.heading}</h2>
         </div>
         <div>
-          <p>
-            Angefangen hat alles 2009 mit sechs Freunden, einer Landkarte und
-            dem Wunsch, die schönsten Pässe der Schweiz gemeinsam zu fahren. Aus
-            der spontanen Ausfahrt wurde eine feste Truppe – und schliesslich
-            der Motorradclub Pudgilly Riders.
-          </p>
-          <p>
-            Heute sind wir ein eingespieltes Team aus Fahrerinnen und Fahrern
-            jeden Alters und mit den unterschiedlichsten Maschinen. Was uns eint,
-            ist die Freude an gemeinsamen Kilometern und gelebter Kameradschaft.
-          </p>
+          {about.history.paragraphs.map((p) => <p>{p}</p>)}
         </div>
       </div>
     </div>
@@ -51,33 +30,27 @@ const timeline = [
   <section class="section section--alt">
     <div class="container">
       <div class="text-center">
-        <span class="eyebrow">Was uns wichtig ist</span>
-        <h2>Unsere Werte</h2>
+        <span class="eyebrow">{about.values.eyebrow}</span>
+        <h2>{about.values.heading}</h2>
       </div>
       <div class="grid grid--3" style="margin-top: 2.5rem;">
-        <article class="card">
-          <div class="card__icon">🛡️</div>
-          <h3>Sicherheit zuerst</h3>
-          <p>Vorausschauend fahren, aufeinander achten und regelmässig trainieren.</p>
-        </article>
-        <article class="card">
-          <div class="card__icon">🌍</div>
-          <h3>Offenheit</h3>
-          <p>Jede Marke, jedes Modell, jedes Level ist willkommen. Hauptsache zwei Räder.</p>
-        </article>
-        <article class="card">
-          <div class="card__icon">♻️</div>
-          <h3>Respekt</h3>
-          <p>Gegenüber der Natur, anderen Verkehrsteilnehmern und untereinander.</p>
-        </article>
+        {
+          about.values.items.map((item) => (
+            <article class="card">
+              <div class="card__icon">{item.icon}</div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))
+        }
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <span class="eyebrow">Meilensteine</span>
-      <h2>Unsere Reise</h2>
+      <span class="eyebrow">{about.timelineHeading.eyebrow}</span>
+      <h2>{about.timelineHeading.heading}</h2>
       <ol class="timeline">
         {
           timeline.map((item) => (
@@ -94,8 +67,8 @@ const timeline = [
   <section class="section section--alt">
     <div class="container">
       <div class="text-center">
-        <span class="eyebrow">Der Vorstand</span>
-        <h2>Köpfe des Clubs</h2>
+        <span class="eyebrow">{about.teamHeading.eyebrow}</span>
+        <h2>{about.teamHeading.heading}</h2>
       </div>
       <div class="grid grid--2 grid--team" style="margin-top: 2.5rem;">
         {

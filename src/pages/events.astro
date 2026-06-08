@@ -2,13 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import { events } from '../data/events';
+import page from '../data/pages/events.json';
 ---
 
 <BaseLayout title="Events" description="Termine der Pudgilly Riders: Ausfahrten, Stammtische, Kurse und Feste im Clubjahr.">
   <PageHero
-    eyebrow="Events"
-    title="Termine 2026"
-    text="Unser Clubkalender – von der Saisoneröffnung bis zur Abschlussfahrt."
+    eyebrow={page.hero.eyebrow}
+    title={page.hero.title}
+    text={page.hero.text}
   />
 
   <section class="section">
@@ -34,11 +35,8 @@ import { events } from '../data/events';
       </ul>
 
       <div class="text-center" style="margin-top: 3rem;">
-        <p class="lead mx-auto" style="margin-bottom: 1.5rem;">
-          Alle Termine ohne Gewähr. Mitglieder erhalten die Details jeweils per
-          Newsletter.
-        </p>
-        <a href="/kontakt/" class="btn btn--primary">In den Verteiler →</a>
+        <p class="lead mx-auto" style="margin-bottom: 1.5rem;">{page.note}</p>
+        <a href={page.ctaButtonHref} class="btn btn--primary">{page.ctaButtonLabel}</a>
       </div>
     </div>
   </section>

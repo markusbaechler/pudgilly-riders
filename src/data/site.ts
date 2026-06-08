@@ -4,6 +4,7 @@ export interface SiteSettings {
   email: string;
   phone: string;
   address: string;
+  footerTagline: string;
   stats: {
     members: number;
     toursPerYear: number;

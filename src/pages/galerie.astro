@@ -1,26 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
-
-// Platzhalter-Galerie: farbige Kacheln mit Bildunterschriften.
-// Echte Fotos einfach unter /public/galerie/ ablegen und hier verlinken.
-const gallery = [
-  { caption: 'Sustenpass im Morgenlicht', tag: 'Tour 2025', hue: 18 },
-  { caption: 'Gruppenfoto am Furka', tag: 'Drei-Pässe-Fahrt', hue: 200 },
-  { caption: 'Kurvenrausch im Tessin', tag: 'Seenrunde', hue: 150 },
-  { caption: 'Schraubertag im Clubhaus', tag: 'Werkstatt', hue: 30 },
-  { caption: 'Sonnenuntergang Jura', tag: 'Feierabendrunde', hue: 280 },
-  { caption: 'Sommerfest 2025', tag: 'Clubleben', hue: 350 },
-  { caption: 'Pause am Lago Maggiore', tag: 'Tessin', hue: 190 },
-  { caption: 'Frühstart in die Saison', tag: 'Saisoneröffnung', hue: 90 },
-];
+import gallery from '../data/gallery.json';
+import page from '../data/pages/gallery.json';
 ---
 
 <BaseLayout title="Galerie" description="Eindrücke von Touren, Events und dem Clubleben der Pudgilly Riders.">
   <PageHero
-    eyebrow="Galerie"
-    title="Momente"
-    text="Bilder sagen mehr als tausend Kilometer. Eindrücke aus unserem Clubjahr."
+    eyebrow={page.hero.eyebrow}
+    title={page.hero.title}
+    text={page.hero.text}
   />
 
   <section class="section">
@@ -45,8 +34,7 @@ const gallery = [
       </div>
 
       <p class="gallery__note">
-        Du hast Fotos von einer Ausfahrt? Schick sie uns – wir nehmen sie gerne
-        in die Galerie auf. <a href="/kontakt/">Kontakt aufnehmen →</a>
+        {page.note} <a href="/kontakt/">Kontakt aufnehmen →</a>
       </p>
     </div>
   </section>

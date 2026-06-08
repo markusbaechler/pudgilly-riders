@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import { site } from '../data/site';
+import page from '../data/pages/contact.json';
 
 const contact = [
   { icon: '✉️', label: 'E-Mail', value: site.email, href: `mailto:${site.email}` },
@@ -12,17 +13,17 @@ const contact = [
 
 <BaseLayout title="Kontakt" description="Kontaktiere die Pudgilly Riders – für Mitfahrten, Mitgliedschaft oder einfach ein Töff-Gespräch.">
   <PageHero
-    eyebrow="Kontakt"
-    title="Schreib uns"
-    text="Fragen zur Mitgliedschaft, zu einer Tour oder einfach Lust auf einen Schwatz? Wir melden uns."
+    eyebrow={page.hero.eyebrow}
+    title={page.hero.title}
+    text={page.hero.text}
   />
 
   <section class="section">
     <div class="container contact-grid">
       <!-- Kontaktinfos -->
       <aside class="contact-info">
-        <span class="eyebrow">Direkt</span>
-        <h2>So erreichst du uns</h2>
+        <span class="eyebrow">{page.directHeading.eyebrow}</span>
+        <h2>{page.directHeading.heading}</h2>
         <ul>
           {
             contact.map((c) => (
@@ -50,7 +51,7 @@ const contact = [
       <!-- Formular -->
       <form
         class="contact-form"
-        action="https://formspree.io/f/your-id"
+        action={page.formAction}
         method="POST"
       >
         <p class="contact-form__note">

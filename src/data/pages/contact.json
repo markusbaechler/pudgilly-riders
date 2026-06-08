@@ -1,0 +1,12 @@
+{
+  "hero": {
+    "eyebrow": "Kontakt",
+    "title": "Schreib uns",
+    "text": "Fragen zur Mitgliedschaft, zu einer Tour oder einfach Lust auf einen Schwatz? Wir melden uns."
+  },
+  "directHeading": {
+    "eyebrow": "Direkt",
+    "heading": "So erreichst du uns"
+  },
+  "formAction": "https://formspree.io/f/your-id"
+}

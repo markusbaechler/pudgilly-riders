@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { tours } from '../data/tours';
 import { events } from '../data/events';
 import { site } from '../data/site';
+import home from '../data/pages/home.json';
 
 const topTours = tours.slice(0, 3);
 const nextEvents = events.slice(0, 3);
@@ -19,16 +20,12 @@ const stats = [
   <!-- Hero -->
   <section class="hero">
     <div class="container hero__inner">
-      <span class="eyebrow">Motorradclub seit 2009</span>
-      <h1>Pudgilly<br />Riders</h1>
-      <p class="lead">
-        Zwei Räder, eine Leidenschaft. Wir sind eine Gruppe von Töfffahrerinnen
-        und Töfffahrern, die das Leben auf der Strasse teilen – Pässe, Kurven
-        und Kameradschaft inklusive.
-      </p>
+      <span class="eyebrow">{home.hero.eyebrow}</span>
+      <h1>{home.hero.titleLine1}<br />{home.hero.titleLine2}</h1>
+      <p class="lead">{home.hero.lead}</p>
       <div class="hero__actions">
-        <a href="/touren/" class="btn btn--primary">Unsere Touren →</a>
-        <a href="/kontakt/" class="btn btn--ghost">Mitfahren</a>
+        <a href={home.hero.primaryCtaHref} class="btn btn--primary">{home.hero.primaryCtaLabel}</a>
+        <a href={home.hero.secondaryCtaHref} class="btn btn--ghost">{home.hero.secondaryCtaLabel}</a>
       </div>
     </div>
     <div class="hero__overlay" aria-hidden="true"></div>
@@ -55,21 +52,12 @@ const stats = [
     <div class="container">
       <div class="intro">
         <div>
-          <span class="eyebrow">Willkommen</span>
-          <h2>Die Strasse ruft –<br />wir antworten gemeinsam</h2>
+          <span class="eyebrow">{home.intro.eyebrow}</span>
+          <h2>{home.intro.heading}</h2>
         </div>
         <div>
-          <p>
-            Ob frisch gebackene A-Fahrerin oder gestandener Tourenprofi: Bei den
-            Pudgilly Riders zählt nicht die Maschine, sondern die Freude am
-            Fahren. Wir organisieren regelmässige Ausfahrten, helfen einander in
-            der Garage und feiern die Saison so, wie es sich gehört.
-          </p>
-          <p>
-            Kein Vereinsmeiertum, dafür echte Kameradschaft, sichere Touren und
-            jede Menge Kurven. Schwing dich auf und fahr ein Stück mit uns.
-          </p>
-          <a href="/ueber-uns/" class="btn btn--ghost">Mehr über uns →</a>
+          {home.intro.paragraphs.map((p) => <p>{p}</p>)}
+          <a href={home.intro.linkHref} class="btn btn--ghost">{home.intro.linkLabel}</a>
         </div>
       </div>
     </div>
@@ -79,34 +67,19 @@ const stats = [
   <section class="section section--alt">
     <div class="container">
       <div class="text-center">
-        <span class="eyebrow">Wofür wir stehen</span>
-        <h2>Mehr als nur fahren</h2>
+        <span class="eyebrow">{home.values.eyebrow}</span>
+        <h2>{home.values.heading}</h2>
       </div>
       <div class="grid grid--3" style="margin-top: 2.5rem;">
-        <article class="card">
-          <div class="card__icon">🛣️</div>
-          <h3>Gemeinsame Touren</h3>
-          <p>
-            Von der entspannten Feierabendrunde bis zur mehrtägigen Alpentour –
-            geplant, sicher und mit dem passenden Tempo für jede Gruppe.
-          </p>
-        </article>
-        <article class="card">
-          <div class="card__icon">🤝</div>
-          <h3>Kameradschaft</h3>
-          <p>
-            Wir fahren zusammen los und kommen zusammen an. Hilfsbereitschaft
-            und Respekt sind bei uns keine leeren Worte.
-          </p>
-        </article>
-        <article class="card">
-          <div class="card__icon">🔧</div>
-          <h3>Wissen teilen</h3>
-          <p>
-            Schraubertage, Fahrtechnik und Tourentipps – im Club lernt jeder von
-            jedem und wird Schritt für Schritt sicherer.
-          </p>
-        </article>
+        {
+          home.values.items.map((item) => (
+            <article class="card">
+              <div class="card__icon">{item.icon}</div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -116,8 +89,8 @@ const stats = [
     <div class="container">
       <div class="section-head">
         <div>
-          <span class="eyebrow">Unterwegs</span>
-          <h2>Beliebte Touren</h2>
+          <span class="eyebrow">{home.toursPreview.eyebrow}</span>
+          <h2>{home.toursPreview.heading}</h2>
         </div>
         <a href="/touren/" class="btn btn--ghost">Alle Touren →</a>
       </div>
@@ -145,8 +118,8 @@ const stats = [
     <div class="container">
       <div class="section-head">
         <div>
-          <span class="eyebrow">Termine</span>
-          <h2>Nächste Events</h2>
+          <span class="eyebrow">{home.eventsPreview.eyebrow}</span>
+          <h2>{home.eventsPreview.heading}</h2>
         </div>
         <a href="/events/" class="btn btn--ghost">Alle Events →</a>
       </div>
@@ -173,12 +146,9 @@ const stats = [
   <!-- CTA -->
   <section class="section cta">
     <div class="container text-center">
-      <h2>Bereit für die nächste Ausfahrt?</h2>
-      <p class="lead mx-auto" style="margin-bottom: 2rem;">
-        Komm zu einem Stammtisch vorbei oder schreib uns – wir freuen uns auf
-        neue Gesichter im Club.
-      </p>
-      <a href="/kontakt/" class="btn btn--primary">Jetzt Kontakt aufnehmen →</a>
+      <h2>{home.cta.heading}</h2>
+      <p class="lead mx-auto" style="margin-bottom: 2rem;">{home.cta.lead}</p>
+      <a href={home.cta.buttonHref} class="btn btn--primary">{home.cta.buttonLabel}</a>
     </div>
   </section>
 </BaseLayout>

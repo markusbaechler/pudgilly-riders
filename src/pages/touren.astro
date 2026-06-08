@@ -2,13 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import { tours } from '../data/tours';
+import page from '../data/pages/tours.json';
 ---
 
 <BaseLayout title="Touren" description="Das Tourenprogramm der Pudgilly Riders – von der entspannten Jurarunde bis zur hochalpinen Pässefahrt.">
   <PageHero
-    eyebrow="Touren"
-    title="Unsere Routen"
-    text="Sechs Lieblingstouren quer durch die Schweiz – für jedes Level ist etwas dabei."
+    eyebrow={page.hero.eyebrow}
+    title={page.hero.title}
+    text={page.hero.text}
   />
 
   <section class="section">
@@ -39,13 +40,10 @@ import { tours } from '../data/tours';
 
   <section class="section section--alt text-center">
     <div class="container">
-      <span class="eyebrow">Mitfahren</span>
-      <h2>Lust auf eine Runde?</h2>
-      <p class="lead mx-auto" style="margin-bottom: 2rem;">
-        Gäste sind auf ausgewählten Touren herzlich willkommen. Melde dich und
-        wir besprechen die Details.
-      </p>
-      <a href="/kontakt/" class="btn btn--primary">Tour anfragen →</a>
+      <span class="eyebrow">{page.cta.eyebrow}</span>
+      <h2>{page.cta.heading}</h2>
+      <p class="lead mx-auto" style="margin-bottom: 2rem;">{page.cta.text}</p>
+      <a href={page.cta.buttonHref} class="btn btn--primary">{page.cta.buttonLabel}</a>
     </div>
   </section>
 </BaseLayout>

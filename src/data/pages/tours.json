@@ -1,0 +1,14 @@
+{
+  "hero": {
+    "eyebrow": "Touren",
+    "title": "Unsere Routen",
+    "text": "Sechs Lieblingstouren quer durch die Schweiz – für jedes Level ist etwas dabei."
+  },
+  "cta": {
+    "eyebrow": "Mitfahren",
+    "heading": "Lust auf eine Runde?",
+    "text": "Gäste sind auf ausgewählten Touren herzlich willkommen. Melde dich und wir besprechen die Details.",
+    "buttonLabel": "Tour anfragen →",
+    "buttonHref": "/kontakt/"
+  }
+}
