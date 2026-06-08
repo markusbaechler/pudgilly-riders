@@ -1,0 +1,14 @@
+# Standard: Git entscheidet automatisch
+* text=auto
+
+# Dateien, die auf dem Linux-Server / in GitHub Actions LF brauchen
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.sh    text eol=lf
+
+# Binärdateien nicht anfassen
+*.svg   text
+*.png   binary
+*.jpg   binary
+*.webp  binary
+*.ico   binary
