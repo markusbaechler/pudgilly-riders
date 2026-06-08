@@ -14,31 +14,31 @@
     "description": "Infos und Treffpunkt via WhatsApp."
   },
   {
-    "date": "2026-06-20",
-    "title": "Drei-Pässe-Wochenende",
+    "date": "2026-07-04",
+    "title": "Bündnerrunde",
     "location": "Graubünden",
     "type": "Ausfahrt",
-    "description": "Zweitägige Tour über Flüela, Albula und Julier mit Übernachtung in Davos."
+    "description": "Irgendwo zwischen Landquart und Poschiavo;-)"
   },
   {
-    "date": "2026-08-08",
-    "title": "Sommerfest & Grillabend",
-    "location": "Clubhaus",
-    "type": "Fest",
-    "description": "Offenes Clubfest mit Grill, Live-Musik und Bike-Show. Gäste herzlich willkommen."
-  },
-  {
-    "date": "2026-09-12",
-    "title": "Stammtisch",
-    "location": "Restaurant Rössli",
-    "type": "Treffen",
-    "description": "Monatlicher Stammtisch – Touren planen, Benzin im Blut und gute Gespräche."
-  },
-  {
-    "date": "2026-10-17",
-    "title": "Saisonabschlussfahrt",
-    "location": "Clubhaus → Emmental",
+    "date": "2026-08-21",
+    "title": "Wochentour",
+    "location": "Kroatien",
     "type": "Ausfahrt",
-    "description": "Letzte gemeinsame Runde der Saison mit anschliessendem Käsefondue."
+    "description": "Die 9tägige Tour dauert bis zum 29. August 2026. Es geht wieder einmal südöstlich nach Kroatien. Infos & Anmeldung via WhatsApp."
+  },
+  {
+    "date": "2026-09-04",
+    "title": "Papiersammlung",
+    "location": "Hüttikon",
+    "type": "Treffen",
+    "description": "18.00 Uhr Treffpunkt, An- und Abmeldungen via WhatsApp."
+  },
+  {
+    "date": "2026-09-26",
+    "title": "Saisonabschlussfahrt",
+    "location": "Tessin",
+    "type": "Ausfahrt",
+    "description": "Letzte gemeinsame Runde der Saison. Treffpunkt voraussichtlich schon am 25.09. - Infos folgen via WhatsApp."
   }
 ]
