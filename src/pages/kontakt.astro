@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+
+const contact = [
+  { icon: '✉️', label: 'E-Mail', value: 'info@pudgilly.ch', href: 'mailto:info@pudgilly.ch' },
+  { icon: '📞', label: 'Telefon', value: '+41 00 000 00 00', href: 'tel:+410000000000' },
+  { icon: '📍', label: 'Clubhaus', value: 'Musterstrasse 1, Schweiz', href: null },
+];
+---
+
+<BaseLayout title="Kontakt" description="Kontaktiere die Pudgilly Riders – für Mitfahrten, Mitgliedschaft oder einfach ein Töff-Gespräch.">
+  <PageHero
+    eyebrow="Kontakt"
+    title="Schreib uns"
+    text="Fragen zur Mitgliedschaft, zu einer Tour oder einfach Lust auf einen Schwatz? Wir melden uns."
+  />
+
+  <section class="section">
+    <div class="container contact-grid">
+      <!-- Kontaktinfos -->
+      <aside class="contact-info">
+        <span class="eyebrow">Direkt</span>
+        <h2>So erreichst du uns</h2>
+        <ul>
+          {
+            contact.map((c) => (
+              <li>
+                <span class="contact-info__icon" aria-hidden="true">{c.icon}</span>
+                <div>
+                  <span class="contact-info__label">{c.label}</span>
+                  {c.href ? (
+                    <a href={c.href}>{c.value}</a>
+                  ) : (
+                    <span>{c.value}</span>
+                  )}
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+
+        <p class="contact-info__hint">
+          Am schnellsten erreichst du uns per E-Mail. Komm auch gern an einem
+          unserer <a href="/events/">Stammtische</a> vorbei.
+        </p>
+      </aside>
+
+      <!-- Formular -->
+      <form
+        class="contact-form"
+        action="https://formspree.io/f/your-id"
+        method="POST"
+      >
+        <p class="contact-form__note">
+          Hinweis: Das Formular ist als statisches Beispiel angelegt. Trage bei
+          <code>action</code> deinen Formular-Dienst ein (z.&nbsp;B. Formspree,
+          Web3Forms) oder ersetze es durch das Kontaktformular von green.ch.
+        </p>
+
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required autocomplete="name" />
+        </div>
+
+        <div class="field">
+          <label for="email">E-Mail</label>
+          <input type="email" id="email" name="email" required autocomplete="email" />
+        </div>
+
+        <div class="field">
+          <label for="subject">Betreff</label>
+          <select id="subject" name="subject">
+            <option>Mitgliedschaft</option>
+            <option>Tour mitfahren</option>
+            <option>Allgemeine Frage</option>
+            <option>Anderes</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="message">Nachricht</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary">Nachricht senden →</button>
+      </form>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-grid {
+    display: grid;
+    gap: 3rem;
+  }
+
+  @media (min-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr 1.2fr;
+      align-items: start;
+    }
+  }
+
+  .contact-info ul {
+    list-style: none;
+    margin: 1.5rem 0;
+    padding: 0;
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .contact-info li {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .contact-info__icon {
+    font-size: 1.5rem;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+
+  .contact-info__label {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+  }
+
+  .contact-info__hint {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+  }
+
+  .contact-form {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 2rem;
+  }
+
+  .contact-form__note {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    background: var(--color-bg-alt);
+    border: 1px dashed var(--color-border);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-form__note code {
+    color: var(--color-accent);
+    font-size: 0.85em;
+  }
+
+  .field {
+    margin-bottom: 1.25rem;
+  }
+
+  .field label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+
+  .field input,
+  .field select,
+  .field textarea {
+    width: 100%;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.75rem 0.9rem;
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color var(--transition);
+  }
+
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  .field textarea {
+    resize: vertical;
+  }
+</style>

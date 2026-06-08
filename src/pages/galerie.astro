@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+
+// Platzhalter-Galerie: farbige Kacheln mit Bildunterschriften.
+// Echte Fotos einfach unter /public/galerie/ ablegen und hier verlinken.
+const gallery = [
+  { caption: 'Sustenpass im Morgenlicht', tag: 'Tour 2025', hue: 18 },
+  { caption: 'Gruppenfoto am Furka', tag: 'Drei-Pässe-Fahrt', hue: 200 },
+  { caption: 'Kurvenrausch im Tessin', tag: 'Seenrunde', hue: 150 },
+  { caption: 'Schraubertag im Clubhaus', tag: 'Werkstatt', hue: 30 },
+  { caption: 'Sonnenuntergang Jura', tag: 'Feierabendrunde', hue: 280 },
+  { caption: 'Sommerfest 2025', tag: 'Clubleben', hue: 350 },
+  { caption: 'Pause am Lago Maggiore', tag: 'Tessin', hue: 190 },
+  { caption: 'Frühstart in die Saison', tag: 'Saisoneröffnung', hue: 90 },
+];
+---
+
+<BaseLayout title="Galerie" description="Eindrücke von Touren, Events und dem Clubleben der Pudgilly Riders.">
+  <PageHero
+    eyebrow="Galerie"
+    title="Momente"
+    text="Bilder sagen mehr als tausend Kilometer. Eindrücke aus unserem Clubjahr."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="gallery">
+        {
+          gallery.map((item) => (
+            <figure
+              class="gallery__item"
+              style={`--hue: ${item.hue};`}
+            >
+              <div class="gallery__media" aria-hidden="true">
+                <span class="gallery__icon">🏍️</span>
+              </div>
+              <figcaption>
+                <span class="gallery__tag">{item.tag}</span>
+                {item.caption}
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+
+      <p class="gallery__note">
+        Du hast Fotos von einer Ausfahrt? Schick sie uns – wir nehmen sie gerne
+        in die Galerie auf. <a href="/kontakt/">Kontakt aufnehmen →</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+    gap: 1.25rem;
+  }
+
+  .gallery__item {
+    margin: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    transition: transform var(--transition), border-color var(--transition);
+  }
+
+  .gallery__item:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-accent);
+  }
+
+  .gallery__media {
+    aspect-ratio: 4 / 3;
+    display: grid;
+    place-items: center;
+    background:
+      linear-gradient(
+        135deg,
+        hsl(var(--hue) 55% 28%),
+        hsl(calc(var(--hue) + 25) 50% 14%)
+      );
+  }
+
+  .gallery__icon {
+    font-size: 2.5rem;
+    opacity: 0.85;
+  }
+
+  .gallery__item figcaption {
+    padding: 1rem 1.1rem 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .gallery__tag {
+    display: block;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.7rem;
+    color: var(--color-accent);
+    margin-bottom: 0.3rem;
+  }
+
+  .gallery__note {
+    margin-top: 2.5rem;
+    text-align: center;
+    color: var(--color-text-muted);
+  }
+</style>

@@ -1,0 +1,52 @@
+name: Build & Deploy
+
+# Baut die Astro-Seite und deployt sie per rsync über SSH auf das green.ch Webhosting.
+on:
+  push:
+    branches: [main]
+  # Erlaubt manuelles Auslösen über den "Actions"-Tab in GitHub.
+  workflow_dispatch:
+
+# Verhindert parallele Deploys, falls schnell hintereinander gepusht wird.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Abhängigkeiten installieren
+        run: npm ci
+
+      - name: Astro-Seite bauen
+        run: npm run build
+
+      - name: SSH-Key & known_hosts vorbereiten
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          # Host-Schlüssel des Servers eintragen, damit rsync nicht interaktiv nachfragt.
+          ssh-keyscan -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Deploy per rsync
+        run: |
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes" \
+            dist/ \
+            "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}"
+
+      - name: Aufräumen
+        if: always()
+        run: rm -f ~/.ssh/deploy_key

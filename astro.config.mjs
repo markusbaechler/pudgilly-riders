@@ -1,0 +1,15 @@
+// @ts-check
+import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
+
+// https://astro.build/config
+export default defineConfig({
+  site: 'https://pudgilly.ch',
+  // Statische Ausgabe nach ./dist – wird per rsync auf das green.ch Webhosting deployt.
+  output: 'static',
+  build: {
+    // Saubere URLs: /touren statt /touren.html
+    format: 'directory',
+  },
+  integrations: [sitemap()],
+});
