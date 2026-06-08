@@ -7,24 +7,7 @@ media:
 
 content:
   # ---------- Listen / Sammlungen ----------
-  - name: tours
-    label: Touren
-    type: file
-    path: src/data/tours.json
-    list: true
-    fields:
-      - { name: title, label: Titel, type: string }
-      - { name: region, label: Region, type: string }
-      - { name: distance, label: Distanz, type: string }
-      - { name: duration, label: Dauer, type: string }
-      - name: level
-        label: Level
-        type: select
-        options:
-          values: [Einsteiger, Fortgeschritten, Profi]
-      - { name: description, label: Beschreibung, type: text }
-      - { name: highlights, label: Höhepunkte, type: string, list: true }
-
+  # (Touren werden neu über den Routenplaner abgebildet – keine statische Liste mehr.)
   - name: events
     label: Events
     type: file
@@ -137,12 +120,6 @@ content:
               - { name: icon, label: Icon (Emoji), type: string }
               - { name: title, label: Titel, type: string }
               - { name: text, label: Text, type: text }
-      - name: toursPreview
-        label: Abschnitt "Beliebte Touren"
-        type: object
-        fields:
-          - { name: eyebrow, label: Kleiner Text, type: string }
-          - { name: heading, label: Überschrift, type: string }
       - name: eventsPreview
         label: Abschnitt "Nächste Events"
         type: object
@@ -203,28 +180,6 @@ content:
         fields:
           - { name: eyebrow, label: Kleiner Text, type: string }
           - { name: heading, label: Überschrift, type: string }
-
-  - name: page_tours
-    label: Seite · Touren (Texte)
-    type: file
-    path: src/data/pages/tours.json
-    fields:
-      - name: hero
-        label: Hero (oben)
-        type: object
-        fields:
-          - { name: eyebrow, label: Kleiner Text, type: string }
-          - { name: title, label: Titel, type: string }
-          - { name: text, label: Untertitel, type: text }
-      - name: cta
-        label: Aufruf unten
-        type: object
-        fields:
-          - { name: eyebrow, label: Kleiner Text, type: string }
-          - { name: heading, label: Überschrift, type: string }
-          - { name: text, label: Text, type: text }
-          - { name: buttonLabel, label: Button-Text, type: string }
-          - { name: buttonHref, label: Button-Link, type: string }
 
   - name: page_gallery
     label: Seite · Galerie (Texte)

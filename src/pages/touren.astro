@@ -1,111 +1,51 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHero from '../components/PageHero.astro';
-import { tours } from '../data/tours';
-import page from '../data/pages/tours.json';
+
+const plannerUrl = 'https://markusbaechler.github.io/motorbike/';
 ---
 
-<BaseLayout title="Touren" description="Das Tourenprogramm der Pudgilly Riders – von der entspannten Jurarunde bis zur hochalpinen Pässefahrt.">
-  <PageHero
-    eyebrow={page.hero.eyebrow}
-    title={page.hero.title}
-    text={page.hero.text}
-  />
-
-  <section class="section">
-    <div class="container">
-      <div class="grid grid--3">
-        {
-          tours.map((tour) => (
-            <article class="card tour-card">
-              <span class:list={['tour-card__level', `level--${tour.level.toLowerCase()}`]}>
-                {tour.level}
-              </span>
-              <h3>{tour.title}</h3>
-              <p class="tour-card__region">{tour.region}</p>
-              <p>{tour.description}</p>
-              <ul class="tour-card__highlights">
-                {tour.highlights.map((h) => <li>{h}</li>)}
-              </ul>
-              <div class="tour-card__meta">
-                <span>📍 {tour.distance}</span>
-                <span>⏱️ {tour.duration}</span>
-              </div>
-            </article>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--alt text-center">
-    <div class="container">
-      <span class="eyebrow">{page.cta.eyebrow}</span>
-      <h2>{page.cta.heading}</h2>
-      <p class="lead mx-auto" style="margin-bottom: 2rem;">{page.cta.text}</p>
-      <a href={page.cta.buttonHref} class="btn btn--primary">{page.cta.buttonLabel}</a>
-    </div>
+<BaseLayout
+  title="Routenplaner"
+  description="Plane kurvige Motorradtouren, Pässe und Übernachtungen mit dem Pudgilly-Riders-Routenplaner."
+>
+  <section class="planner">
+    <iframe
+      class="planner__frame"
+      src={plannerUrl}
+      title="Pudgilly Riders Routenplaner"
+      loading="eager"
+      allow="geolocation; clipboard-write; fullscreen"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+    <p class="planner__fallback">
+      Der Routenplaner lädt nicht?
+      <a href={plannerUrl} target="_blank" rel="noopener">In neuem Tab öffnen →</a>
+    </p>
   </section>
 </BaseLayout>
 
 <style>
-  .tour-card {
-    display: flex;
-    flex-direction: column;
+  .planner {
+    position: relative;
+    background: var(--color-bg);
   }
 
-  .tour-card__level {
-    align-self: flex-start;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-accent);
-    background: var(--color-accent-soft);
-    padding: 0.25rem 0.7rem;
-    border-radius: 999px;
-    margin-bottom: 0.75rem;
+  .planner__frame {
+    display: block;
+    width: 100%;
+    /* Füllt den Bildschirm unter der fixierten Kopfzeile (72px) */
+    height: calc(100dvh - 72px);
+    min-height: 560px;
+    border: 0;
   }
 
-  .level--einsteiger {
-    color: #4ade80;
-    background: rgba(74, 222, 128, 0.12);
-  }
-
-  .level--profi {
-    color: #f87171;
-    background: rgba(248, 113, 113, 0.12);
-  }
-
-  .tour-card__region {
-    color: var(--color-text-muted);
+  .planner__fallback {
+    margin: 0;
+    padding: 0.75rem 1.5rem;
+    text-align: center;
     font-size: 0.9rem;
-    margin-top: -0.25rem;
-  }
-
-  .tour-card__highlights {
-    list-style: none;
-    margin: 0.5rem 0 1rem;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
-  .tour-card__highlights li {
-    font-size: 0.8rem;
     color: var(--color-text-muted);
-    border: 1px solid var(--color-border);
-    border-radius: 6px;
-    padding: 0.2rem 0.55rem;
-  }
-
-  .tour-card__meta {
-    display: flex;
-    gap: 1.25rem;
-    margin-top: auto;
-    padding-top: 1rem;
+    background: var(--color-bg-alt);
     border-top: 1px solid var(--color-border);
-    color: var(--color-text-muted);
-    font-size: 0.9rem;
   }
 </style>
