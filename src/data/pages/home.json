@@ -4,7 +4,7 @@
     "titleLine1": "Pudgilly",
     "titleLine2": "Riders",
     "lead": "Zwei Räder, eine Leidenschaft. Wir sind eine Gruppe von Töfffahrerinnen und Töfffahrern, die das Leben auf der Strasse teilen – Pässe, Kurven und Kameradschaft inklusive.",
-    "primaryCtaLabel": "Tourenplaner →",
+    "primaryCtaLabel": "Zum Routenplaner →",
     "primaryCtaHref": "/touren/",
     "secondaryCtaLabel": "Mitfahren",
     "secondaryCtaHref": "/kontakt/"
@@ -46,7 +46,7 @@
   },
   "cta": {
     "heading": "Bereit für die nächste Ausfahrt?",
-    "lead": "Komm zu einem Stammtisch vorbei oder schreib uns – wir freuen uns auf neue Gesichter im Club.",
+    "lead": "Komm an einer Ausfahrt mit oder schreib uns – wir freuen uns auf neue Gesichter im Club.",
     "buttonLabel": "Jetzt Kontakt aufnehmen →",
     "buttonHref": "/kontakt/"
   }

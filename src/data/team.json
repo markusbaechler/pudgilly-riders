@@ -14,7 +14,7 @@
   {
     "name": "Andy Moser",
     "role": "Tourenchef",
-    "bike": "KTM ",
+    "bike": "KTM",
     "emoji": "👨🏼‍🦲"
   },
   {
@@ -27,6 +27,6 @@
     "name": "Matthias Meier",
     "role": "Kassier",
     "bike": "Aprilia Touareg",
-    "emoji": "👩🏻‍🦲"
+    "emoji": "👨🏻"
   }
 ]
