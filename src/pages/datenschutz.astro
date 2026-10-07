@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Datenschutz"
+  description="Datenschutzerklärung der Website des Motorradclubs Pudgilly Riders."
+>
+  <PageHero
+    eyebrow="Rechtliches"
+    title="Datenschutzerklärung"
+    text="Wie wir mit deinen Daten umgehen – kurz und verständlich."
+  />
+
+  <section class="section">
+    <div class="container prose">
+      <p class="prose__meta">Stand: Oktober 2026</p>
+
+      <h2>1. Verantwortliche Stelle</h2>
+      <p>Verantwortlich für die Datenbearbeitung auf dieser Website ist:</p>
+      <p>
+        <strong>Pudgilly Riders</strong><br />
+        {site.address}<br />
+        Schweiz<br />
+        E-Mail: <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+      <p>
+        Diese Datenschutzerklärung richtet sich nach dem Schweizer Bundesgesetz über den Datenschutz
+        (DSG).
+      </p>
+
+      <h2>2. Besuch der Website</h2>
+      <p>
+        Beim Aufruf unserer Seiten speichert der Webserver unseres Hosting-Anbieters automatisch
+        technische Angaben in sogenannten Logfiles: IP-Adresse, Datum und Uhrzeit, aufgerufene
+        Seite, übertragene Datenmenge, Browsertyp und die zuvor besuchte Seite.
+      </p>
+      <p>
+        Diese Daten brauchen wir, um die Website sicher und störungsfrei zu betreiben. Wir führen
+        sie nicht mit anderen Daten zusammen. Sie werden nach der üblichen Frist des
+        Hosting-Anbieters gelöscht.
+      </p>
+      <p>Hosting: green.ch AG, Schweiz. Die Logdaten bleiben damit in der Schweiz.</p>
+
+      <h2>3. Kontaktformular</h2>
+      <p>
+        Wenn du uns über das Kontaktformular schreibst, erfassen wir Name, E-Mail-Adresse, Betreff
+        und deine Nachricht. Wir verwenden diese Angaben ausschliesslich, um deine Anfrage zu
+        beantworten.
+      </p>
+      <p>
+        Für den Versand nutzen wir den Dienst Web3Forms (web3forms.com). Web3Forms leitet die
+        Formulardaten an unsere E-Mail-Adresse weiter. Mehr dazu in der
+        <a href="https://web3forms.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung von Web3Forms</a>.
+      </p>
+      <p>
+        Du kannst uns jederzeit auch direkt per E-Mail schreiben. Wir löschen Anfragen, sobald sie
+        erledigt sind und keine Aufbewahrungspflicht besteht.
+      </p>
+
+      <h2>4. Schriftarten von Google</h2>
+      <p>
+        Für eine einheitliche Darstellung laden wir die Schriftart Plus Jakarta Sans von Google
+        Fonts. Dabei stellt dein Browser eine Verbindung zu Servern von Google her und übermittelt
+        deine IP-Adresse. Anbieter ist Google Ireland Limited, Dublin, Irland. Details in der
+        <a href="https://policies.google.com/privacy?hl=de" target="_blank" rel="noopener">Datenschutzerklärung von Google</a>.
+      </p>
+
+      <h2>5. Eingebetteter Routenplaner</h2>
+      <p>
+        Auf der Seite «Routenplaner» betten wir unseren Tourenplaner ein. Er wird bei GitHub Pages
+        gehostet (GitHub Inc., USA). Beim Aufruf dieser Seite wird deine IP-Adresse an GitHub
+        übermittelt. Für Karten und Routen greift der Planer zudem auf Dienste Dritter zu, die
+        ebenfalls deine IP-Adresse erhalten. Deinen Standort verwendet der Planer nur, wenn du das
+        im Browser ausdrücklich erlaubst. Details in der
+        <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.
+      </p>
+
+      <h2>6. Cookies und Statistik</h2>
+      <p>
+        Unsere Website setzt selbst keine Cookies und verwendet keine Analyse- oder Werbedienste.
+        Wir erstellen keine Nutzerprofile. Eingebettete Dienste Dritter können technisch notwendige
+        Cookies setzen.
+      </p>
+
+      <h2>7. Fotos und Videos</h2>
+      <p>
+        In der Galerie und auf der Startseite zeigen wir Bilder von Ausfahrten und Clubanlässen, auf
+        denen Mitglieder und Gäste zu sehen sein können. Wer auf einem Bild erkennbar ist und es
+        entfernt haben möchte, schreibt uns kurz per E-Mail. Wir nehmen das Bild dann umgehend
+        offline.
+      </p>
+
+      <h2>8. Deine Rechte</h2>
+      <p>
+        Du hast das Recht auf Auskunft über die Daten, die wir über dich bearbeiten, sowie auf
+        Berichtigung, Löschung und Einschränkung der Bearbeitung. Melde dich dafür per E-Mail an
+        <a href={`mailto:${site.email}`}>{site.email}</a>. Du kannst dich zudem beim Eidgenössischen
+        Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) beschweren.
+      </p>
+
+      <h2>9. Änderungen</h2>
+      <p>
+        Wir passen diese Datenschutzerklärung an, wenn sich die Website oder die rechtlichen
+        Vorgaben ändern. Es gilt jeweils die hier veröffentlichte Fassung.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

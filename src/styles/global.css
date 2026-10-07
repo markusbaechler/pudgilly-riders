@@ -204,6 +204,42 @@ img {
   margin-bottom: 0.75rem;
 }
 
+/* Fliesstext (Impressum, Datenschutz) */
+.prose {
+  max-width: 72ch;
+}
+
+.prose h2 {
+  font-size: 1.45rem;
+  margin-top: 2.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.prose h2:first-child {
+  margin-top: 0;
+}
+
+.prose p,
+.prose li {
+  color: var(--color-text-muted);
+}
+
+.prose strong {
+  color: var(--color-text);
+}
+
+.prose a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.prose__meta {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 2rem;
+}
+
 /* Utility */
 .text-center {
   text-align: center;
