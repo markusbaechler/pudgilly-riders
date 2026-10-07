@@ -6,6 +6,10 @@ on:
     branches: [main]
   # Erlaubt manuelles Auslösen über den "Actions"-Tab in GitHub.
   workflow_dispatch:
+  # Täglicher Neuaufbau um 03:00 UTC (05:00 Sommerzeit), damit vergangene
+  # Termine automatisch von der Startseite verschwinden – auch ohne neuen Push.
+  schedule:
+    - cron: '0 3 * * *'
 
 # Verhindert parallele Deploys, falls schnell hintereinander gepusht wird.
 concurrency:

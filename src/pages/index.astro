@@ -1,10 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { events } from '../data/events';
+import { upcomingEvents } from '../data/events';
 import { site } from '../data/site';
 import home from '../data/pages/home.json';
 
-const nextEvents = events.slice(0, 3);
+// Nur kommende Termine (heute eingeschlossen), maximal drei
+const nextEvents = upcomingEvents.slice(0, 3);
 
 const stats = [
   { value: String(site.stats.members), label: 'Mitglieder' },
@@ -17,18 +18,18 @@ const stats = [
 <BaseLayout title="Start" description="Pudgilly Riders – Motorradclub für gemeinsame Touren, Events und gelebte Töff-Leidenschaft.">
   <!-- Hero -->
   <section class="hero">
+    <!-- Das Video wird erst per Script geladen (siehe unten), und nur ab Tablet-Breite.
+         Handys zeigen das Standbild aus dem poster-Attribut. -->
     <video
       class="hero__video"
-      autoplay
       loop
       muted
       playsinline
-      preload="metadata"
+      preload="none"
       poster="/hero/hero.jpg"
+      data-src="/hero/hero.mp4"
       aria-hidden="true"
-    >
-      <source src="/hero/hero.mp4" type="video/mp4" />
-    </video>
+    ></video>
     <div class="hero__scrim" aria-hidden="true"></div>
 
     <div class="container hero__inner">
@@ -126,23 +127,29 @@ const stats = [
         </div>
         <a href="/events/" class="btn btn--ghost">Alle Events →</a>
       </div>
-      <ul class="event-list" style="margin-top: 2rem;">
-        {
-          nextEvents.map((event) => (
-            <li class="event-row">
-              <time class="event-row__date" datetime={event.date}>
-                {event.dateLabel}
-              </time>
-              <div class="event-row__body">
-                <h3>{event.title}</h3>
-                <p>
-                  <span class="badge">{event.type}</span> {event.location}
-                </p>
-              </div>
-            </li>
-          ))
-        }
-      </ul>
+      {
+        nextEvents.length === 0 ? (
+          <p class="event-list__empty">
+            Aktuell sind keine Termine eingetragen. Neue Ausfahrten kündigen wir hier und per WhatsApp an.
+          </p>
+        ) : (
+          <ul class="event-list" style="margin-top: 2rem;">
+            {nextEvents.map((event) => (
+              <li class="event-row">
+                <time class="event-row__date" datetime={event.date}>
+                  {event.dateLabel}
+                </time>
+                <div class="event-row__body">
+                  <h3>{event.title}</h3>
+                  <p>
+                    <span class="badge">{event.type}</span> {event.location}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )
+      }
     </div>
   </section>
 
@@ -155,6 +162,24 @@ const stats = [
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  // Hero-Video nur auf grösseren Bildschirmen laden. Handys, Datensparmodus und
+  // "Bewegung reduzieren" bekommen das Standbild – das spart rund 2 MB pro Besuch.
+  const video = document.querySelector<HTMLVideoElement>('.hero__video');
+  const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
+  const wantsVideo =
+    window.matchMedia('(min-width: 768px)').matches &&
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
+    !saveData;
+
+  if (video && wantsVideo && video.dataset.src) {
+    video.src = video.dataset.src;
+    video.play().catch(() => {
+      /* Autoplay blockiert – das Standbild bleibt sichtbar */
+    });
+  }
+</script>
 
 <style>
   .hero {
@@ -330,6 +355,15 @@ const stats = [
     padding: 0;
     display: grid;
     gap: 1rem;
+  }
+
+  .event-list__empty {
+    margin: 2rem 0 0;
+    padding: 1.75rem;
+    border: 1px dashed var(--color-border-strong);
+    border-radius: var(--radius);
+    color: var(--color-text-muted);
+    text-align: center;
   }
 
   .event-row {
