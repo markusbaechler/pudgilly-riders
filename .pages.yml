@@ -2,7 +2,8 @@
 # Definiert, welche Inhalte über die CMS-Oberfläche bearbeitet werden können.
 
 media:
-  input: public/galerie
+  # Bilder liegen in src/assets, damit Astro sie beim Build verkleinert und komprimiert.
+  input: src/assets/galerie
   output: /galerie
 
 content:

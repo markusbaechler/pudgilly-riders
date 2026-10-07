@@ -9,7 +9,7 @@ Deployment erfolgt automatisch per GitHub Actions (rsync über SSH) auf das gree
 | ---------- | ------------- |
 | Start      | `/`           |
 | Über uns   | `/ueber-uns/` |
-| Touren     | `/touren/`    |
+| Routenplaner | `/touren/`  |
 | Galerie    | `/galerie/`   |
 | Events     | `/events/`    |
 | Kontakt    | `/kontakt/`   |
@@ -34,12 +34,13 @@ src/
 ├── layouts/      # BaseLayout (Grundgerüst aller Seiten)
 ├── pages/        # Eine Datei pro Seite -> wird zur URL
 └── styles/       # global.css (Designsystem / Farben / Buttons)
-public/           # Statische Dateien (favicon.svg, robots.txt)
+├── assets/       # Galerie-Fotos (werden beim Build optimiert)
+public/           # Statische Dateien (favicon.svg, robots.txt, og-image.jpg, Hero)
 ```
 
-Inhalte wie Touren und Events pflegst du bequem in `src/data/`. Eigene Fotos für
-die Galerie legst du unter `public/galerie/` ab und verlinkst sie in
-`src/pages/galerie.astro`.
+Inhalte wie Events, Vorstand und Galerie pflegst du bequem in `src/data/` oder
+direkt über das CMS (pagescms.org). Galerie-Fotos liegen unter `src/assets/galerie/`;
+Astro verkleinert und komprimiert sie beim Build automatisch.
 
 ## Deployment
 
