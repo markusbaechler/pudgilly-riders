@@ -1,6 +1,8 @@
 name: Build & Deploy
 
-# Baut die Astro-Seite und deployt sie per rsync über SSH auf das green.ch Webhosting.
+# Baut die Astro-Seite samt Routenplaner und deployt sie per rsync über SSH auf
+# das green.ch Webhosting. Der Routenplaner (Repo markusbaechler/motorbike) wird
+# bei jedem Build frisch mitgebaut und unter /planer/ abgelegt.
 on:
   push:
     branches: [main]
@@ -10,6 +12,10 @@ on:
   # Termine automatisch von der Startseite verschwinden – auch ohne neuen Push.
   schedule:
     - cron: '0 3 * * *'
+  # Vom Routenplaner-Repo nach jedem Push dort ausgelöst (Job "notify-website"
+  # in dessen Workflow), damit pudgilly.ch/planer/ ohne Handgriff aktuell bleibt.
+  repository_dispatch:
+    types: [planer-updated]
 
 # Verhindert parallele Deploys, falls schnell hintereinander gepusht wird.
 concurrency:
@@ -24,17 +30,46 @@ jobs:
       - name: Repository auschecken
         uses: actions/checkout@v4
 
+      # Öffentliches Repo: braucht kein eigenes Token.
+      - name: Routenplaner auschecken
+        uses: actions/checkout@v4
+        with:
+          repository: markusbaechler/motorbike
+          ref: main
+          path: planer-src
+
       - name: Node.js einrichten
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            planer-src/package-lock.json
 
       - name: Abhängigkeiten installieren
         run: npm ci
 
       - name: Astro-Seite bauen
         run: npm run build
+
+      - name: Routenplaner bauen
+        working-directory: planer-src
+        env:
+          # Booking.com-Partner-ID des Clubs (Repo → Settings → Secrets and
+          # variables → Actions → Variables). Leer = Links ohne Provision.
+          VITE_BOOKING_AID: ${{ vars.BOOKING_AID }}
+        run: |
+          npm ci
+          npm run build
+
+      - name: Routenplaner nach dist/planer/ legen
+        run: |
+          rm -rf dist/planer
+          mkdir -p dist/planer
+          cp -R planer-src/dist/. dist/planer/
+          test -f dist/planer/index.html
+          test -f dist/planer/sw.js
 
       - name: SSH-Key & known_hosts vorbereiten
         run: |
