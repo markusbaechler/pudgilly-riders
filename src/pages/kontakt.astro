@@ -4,6 +4,9 @@ import PageHero from '../components/PageHero.astro';
 import { site } from '../data/site';
 import page from '../data/pages/contact.json';
 
+// WhatsApp-Link aus der Clubnummer (nur Ziffern, ohne +)
+const whatsappHref = `https://wa.me/${site.phone.replace(/\D/g, '')}`;
+
 const contact = [
   { icon: '✉️', label: 'E-Mail', value: site.email, href: `mailto:${site.email}` },
   { icon: '📞', label: 'Telefon', value: site.phone, href: `tel:${site.phone.replace(/\s+/g, '')}` },
@@ -43,8 +46,9 @@ const contact = [
         </ul>
 
         <p class="contact-info__hint">
-          Am schnellsten erreichst du uns per E-Mail. Oder komm an einem
-          unserer <a href="/events/">Events</a> vorbei.
+          Am schnellsten schreibst du ein kurzes
+          <a href={whatsappHref} target="_blank" rel="noopener">WhatsApp</a>. Das mit dem
+          Kontaktformular ist immer so eine Sache;-)
         </p>
       </aside>
 
