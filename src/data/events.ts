@@ -89,15 +89,35 @@ function todayInSwitzerland(): string {
 
 export const today = todayInSwitzerland();
 
+// Tage zwischen zwei Daten (b minus a)
+function dayDiff(a: string, b: string): number {
+  const [ay, am, ad] = a.split('-').map(Number);
+  const [by, bm, bd] = b.split('-').map(Number);
+  return Math.round((Date.UTC(by, bm - 1, bd) - Date.UTC(ay, am - 1, ad)) / 86_400_000);
+}
+
 // Tage von heute bis zum Datum (negativ = vergangen)
-function daysUntil(iso: string): number {
-  const [y, m, d] = iso.split('-').map(Number);
-  const [ty, tm, td] = today.split('-').map(Number);
-  return Math.round((Date.UTC(y, m - 1, d) - Date.UTC(ty, tm - 1, td)) / 86_400_000);
+const daysUntil = (iso: string) => dayDiff(today, iso);
+
+// Längste plausible Dauer eines Termins in Tagen. Ein Enddatum weiter weg ist fast sicher ein
+// Eingabefehler (z. B. ein vom CMS automatisch eingesetztes Datum) und wird ignoriert.
+const MAX_DAYS = 31;
+
+// Enddatum nur übernehmen, wenn es plausibel ist: nach dem Start und höchstens MAX_DAYS später.
+function validEndDate(e: RawEvent): string | undefined {
+  if (!e.endDate || e.endDate <= e.date) return undefined;
+  const days = dayDiff(e.date, e.endDate);
+  if (days > MAX_DAYS) {
+    console.warn(
+      `[events] «${e.title}» (${e.date}): Enddatum ${e.endDate} ignoriert, ${days} Tage sind unplausibel.`
+    );
+    return undefined;
+  }
+  return e.endDate;
 }
 
 // Letzter Tag eines Termins (bei mehrtägigen das Enddatum)
-const lastDay = (e: RawEvent) => (e.endDate && e.endDate > e.date ? e.endDate : e.date);
+const lastDay = (e: RawEvent) => validEndDate(e) ?? e.date;
 
 // "in 29 Tagen" · "morgen" · "heute" · "läuft gerade" · "vorbei"
 export function formatRelative(e: RawEvent): string {
@@ -114,12 +134,14 @@ export function formatRelative(e: RawEvent): string {
 export const events: ClubEvent[] = (data as RawEvent[])
   .map((e) => {
     const p = parts(e.date);
+    const end = validEndDate(e);
+    const clean = { ...e, endDate: end };
     return {
-      ...e,
-      dateLabel: formatDateRange(e.date, e.endDate),
-      shortLabel: formatShort(e.date, e.endDate),
-      longLabel: formatLong(e.date, e.endDate),
-      relativeLabel: formatRelative(e),
+      ...clean,
+      dateLabel: formatDateRange(e.date, end),
+      shortLabel: formatShort(e.date, end),
+      longLabel: formatLong(e.date, end),
+      relativeLabel: formatRelative(clean),
       day: p.day2,
       monthShort: p.monthShort.replace('.', ''),
     };

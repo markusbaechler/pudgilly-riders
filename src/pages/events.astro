@@ -237,6 +237,7 @@ const badgeClass = (type: string) => ['badge', `badge--${type.toLowerCase()}`];
     max-width: 55ch;
     margin: 0;
     font-size: 1.1rem;
+    white-space: pre-line; /* Zeilenumbrüche aus dem CMS übernehmen */
   }
 
   /* Kalender-Kachel */
@@ -420,6 +421,7 @@ const badgeClass = (type: string) => ['badge', `badge--${type.toLowerCase()}`];
     display: block;
     color: var(--color-text-muted);
     font-size: 0.92rem;
+    white-space: pre-line; /* Zeilenumbrüche aus dem CMS übernehmen */
   }
 
   .agenda__empty {

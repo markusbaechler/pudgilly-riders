@@ -23,6 +23,9 @@ content:
       - name: endDate
         label: Bis-Datum (nur bei mehrtägigen Terminen)
         type: date
+        # Wichtig: ohne default "" setzt Pages CMS bei jedem Speichern das heutige Datum ein.
+        default: ""
+        description: Leer lassen bei eintägigen Terminen.
         options:
           format: yyyy-MM-dd
       - { name: title, label: Titel, type: string }
