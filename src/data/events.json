@@ -1,18 +1,21 @@
 [
   {
     "date": "2026-06-12",
+    "endDate": "2026-10-08",
     "title": "Feierabendrunde",
     "location": "Spontan nach Lust und Wetter",
     "type": "Ausfahrt"
   },
   {
     "date": "2026-07-04",
+    "endDate": "2026-10-08",
     "title": "Bündnerrunde",
     "location": "Irgendwo zwischen Landquart und Poschiavo",
     "type": "Ausfahrt"
   },
   {
     "date": "2026-08-21",
+    "endDate": "2026-10-08",
     "title": "Wochentour",
     "location": "Kroatien",
     "type": "Ausfahrt",
@@ -20,6 +23,7 @@
   },
   {
     "date": "2026-09-04",
+    "endDate": "2026-10-08",
     "title": "Papiersammlung",
     "location": "Hüttikon",
     "type": "Treffen",
@@ -27,6 +31,7 @@
   },
   {
     "date": "2026-09-26",
+    "endDate": "2026-10-08",
     "title": "Saisonabschlussfahrt",
     "location": "Tessin",
     "type": "Ausfahrt",
@@ -34,18 +39,22 @@
   },
   {
     "date": "2026-10-07",
+    "endDate": "2026-10-08",
     "title": "Vorstandssitzung",
     "location": "noch offen",
     "type": "Treffen"
   },
   {
     "date": "2026-11-06",
+    "endDate": "2026-10-08",
     "title": "Generalversammlung",
-    "location": "noch offen",
-    "type": "Treffen"
+    "location": "Frey's Gourmet Stübli, Alte Buchserstrasse 7, 8108 Dällikon",
+    "type": "Treffen",
+    "description": "Apéro ab 18.30 Uhr\nBeginn GV 19.15 Uhr mit Nachtessen im Anschluss.\nAn- und Abmeldungen via WhatsApp."
   },
   {
     "date": "2026-11-28",
+    "endDate": "2026-10-08",
     "title": "Papiersammeln",
     "location": "Hüttikon",
     "type": "Treffen",
@@ -53,6 +62,7 @@
   },
   {
     "date": "2027-01-23",
+    "endDate": "2026-10-08",
     "title": "Fondueessen",
     "location": "noch offen",
     "type": "Treffen",
@@ -60,18 +70,21 @@
   },
   {
     "date": "2027-02-19",
+    "endDate": "2026-10-08",
     "title": "Moto Züri",
     "location": "Zürich",
     "type": "Treffen"
   },
   {
     "date": "2027-02-27",
+    "endDate": "2026-10-08",
     "title": "Papiersammlung",
     "location": "Hüttikon",
     "type": "Treffen"
   },
   {
     "date": "2027-04-03",
+    "endDate": "2026-10-08",
     "title": "Warm up",
     "location": "noch offen",
     "type": "Ausfahrt",
@@ -87,36 +100,42 @@
   },
   {
     "date": "2027-05-28",
+    "endDate": "2026-10-08",
     "title": "Papiersammlung",
     "location": "Hüttikon",
     "type": "Treffen"
   },
   {
     "date": "2027-06-11",
+    "endDate": "2026-10-08",
     "title": "Feierabendrunde",
     "location": "Spontan nach Lust und Wetter",
     "type": "Ausfahrt"
   },
   {
     "date": "2027-07-03",
+    "endDate": "2026-10-08",
     "title": "Bündnerrunde",
     "location": "Graubünden",
     "type": "Ausfahrt"
   },
   {
     "date": "2027-08-05",
+    "endDate": "2026-10-08",
     "title": "Feierabendrunde",
     "location": "Spontan nach Lust und Wetter",
     "type": "Ausfahrt"
   },
   {
     "date": "2027-09-03",
+    "endDate": "2026-10-08",
     "title": "Papiersammlung",
     "location": "Hüttikon",
     "type": "Treffen"
   },
   {
     "date": "2027-09-09",
+    "endDate": "2026-10-08",
     "title": "Vorstandssitzung",
     "location": "noch offen",
     "type": "Treffen"
@@ -139,12 +158,14 @@
   },
   {
     "date": "2027-11-05",
+    "endDate": "2026-10-08",
     "title": "Generalversammlung",
     "location": "noch offen",
     "type": "Treffen"
   },
   {
     "date": "2027-12-04",
+    "endDate": "2026-10-08",
     "title": "Papiersammlung mit Glühwein",
     "location": "Hüttikon",
     "type": "Treffen",
