@@ -2,7 +2,10 @@
 import { statSync } from 'node:fs';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { nextEvent, furtherEvents, type ClubEvent } from '../data/events';
+import { tourBySlug } from '../data/touren';
 import page from '../data/pages/events.json';
+
+const nextTour = tourBySlug(nextEvent?.tour);
 
 // Weitere Termine nach Jahr gruppieren (z. B. Rest 2026, dann 2027)
 const byYear = furtherEvents.reduce<Record<string, ClubEvent[]>>((acc, e) => {
@@ -55,6 +58,11 @@ const badgeClass = (type: string) => ['badge', `badge--${type.toLowerCase()}`];
                 </p>
               )}
               {nextEvent.description && <p class="next__desc">{nextEvent.description}</p>}
+              {nextTour && (
+                <a href={`/touren/#${nextTour.slug}`} class="btn btn--ghost next__tour">
+                  Zur Tour: {nextTour.title} →
+                </a>
+              )}
             </div>
 
             <div class="cal-wrap" aria-hidden="true">
@@ -125,6 +133,11 @@ const badgeClass = (type: string) => ['badge', `badge--${type.toLowerCase()}`];
                           {event.location && event.description && ' – '}
                           {event.description}
                         </span>
+                      )}
+                      {tourBySlug(event.tour) && (
+                        <a class="agenda__tour" href={`/touren/#${tourBySlug(event.tour)!.slug}`}>
+                          Tour ansehen →
+                        </a>
                       )}
                     </div>
                     <span class:list={badgeClass(event.type)}>{event.type}</span>
@@ -238,6 +251,10 @@ const badgeClass = (type: string) => ['badge', `badge--${type.toLowerCase()}`];
     margin: 0;
     font-size: 1.1rem;
     white-space: pre-line; /* Zeilenumbrüche aus dem CMS übernehmen */
+  }
+
+  .next__tour {
+    margin-top: 1.25rem;
   }
 
   /* Kalender-Kachel */
@@ -422,6 +439,14 @@ const badgeClass = (type: string) => ['badge', `badge--${type.toLowerCase()}`];
     color: var(--color-text-muted);
     font-size: 0.92rem;
     white-space: pre-line; /* Zeilenumbrüche aus dem CMS übernehmen */
+  }
+
+  .agenda__tour {
+    display: inline-block;
+    margin-top: 0.3rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-accent);
   }
 
   .agenda__empty {
