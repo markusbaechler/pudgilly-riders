@@ -8,7 +8,33 @@ media:
 
 content:
   # ---------- Listen / Sammlungen ----------
-  # (Touren werden neu über den Routenplaner abgebildet – keine statische Liste mehr.)
+  - name: touren
+    label: Club-Touren
+    type: file
+    path: src/data/touren.json
+    list: true
+    fields:
+      - name: slug
+        label: Kürzel
+        type: string
+        description: Kurz, nur Kleinbuchstaben, Ziffern und Bindestrich, z. B. buendnerrunde. Wird in Links verwendet und bei Events als Verweis eingetragen.
+      - { name: title, label: Name der Tour, type: string }
+      - { name: region, label: Region, type: string }
+      - name: level
+        label: Anspruch
+        type: select
+        options:
+          values: [leicht, mittel, anspruchsvoll]
+      - { name: description, label: Beschreibung, type: text }
+      - { name: highlights, label: Highlights (Pässe, Orte), type: string, list: true }
+      - name: planerLink
+        label: Planer-Link
+        type: string
+        description: Im Routenplaner die Tour öffnen → «Teilen» → «Link kopieren» und hier einfügen. Daraus liest die Website Punkte, Tage, Kilometer und Fahrzeit.
+      - name: image
+        label: Bild (optional)
+        type: image
+
   - name: events
     label: Events
     type: file
@@ -36,6 +62,10 @@ content:
         options:
           values: [Ausfahrt, Treffen, Fest, Kurs]
       - { name: description, label: Beschreibung, type: text }
+      - name: tour
+        label: Club-Tour (Kürzel)
+        type: string
+        description: Kürzel einer Tour aus «Club-Touren», z. B. buendnerrunde. Leer lassen, wenn kein Tourvorschlag dazugehört.
 
   - name: team
     label: Vorstand (Köpfe des Clubs)
@@ -234,6 +264,20 @@ content:
             label: Pfad zur PDF-Datei
             type: string
             description: Datei liegt in public/downloads, z. B. /downloads/jahresprogramm-2027.pdf
+
+  - name: page_touren
+    label: Seite · Touren (Texte)
+    type: file
+    path: src/data/pages/touren.json
+    fields:
+      - name: hero
+        label: Hero (oben)
+        type: object
+        fields:
+          - { name: eyebrow, label: Kleiner Text, type: string }
+          - { name: title, label: Titel, type: string }
+          - { name: text, label: Untertitel, type: text }
+      - { name: note, label: Hinweis unter der Liste, type: text }
 
   - name: page_contact
     label: Seite · Kontakt (Texte)

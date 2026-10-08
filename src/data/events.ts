@@ -19,9 +19,11 @@ export interface ClubEvent {
   location?: string;
   type: 'Ausfahrt' | 'Treffen' | 'Fest' | 'Kurs';
   description?: string;
+  /** Kürzel einer Club-Tour (src/data/touren.json), falls der Termin auf einer Tour basiert */
+  tour?: string;
 }
 
-type RawEvent = Pick<ClubEvent, 'date' | 'endDate' | 'title' | 'location' | 'type' | 'description'>;
+type RawEvent = Pick<ClubEvent, 'date' | 'endDate' | 'title' | 'location' | 'type' | 'description' | 'tour'>;
 
 const MONTHS = [
   'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
