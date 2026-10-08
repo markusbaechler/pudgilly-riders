@@ -211,15 +211,15 @@ content:
     path: src/data/pages/events.json
     fields:
       - name: hero
-        label: Hero (oben)
+        label: Kopfbereich (nächster Termin)
         type: object
         fields:
-          - { name: eyebrow, label: Kleiner Text, type: string }
-          - { name: title, label: Titel, type: string }
-          - { name: text, label: Untertitel, type: text }
-      - { name: note, label: Hinweis unten, type: text }
-      - { name: ctaButtonLabel, label: Button-Text, type: string }
-      - { name: ctaButtonHref, label: Button-Link, type: string }
+          - { name: eyebrow, label: Label über dem nächsten Termin, type: string }
+          - { name: title, label: Seitentitel (nur für Suchmaschinen und Screenreader), type: string }
+      - { name: listHeading, label: Überschrift der Terminliste, type: string }
+      - { name: note, label: Hinweis unter der Überschrift, type: text }
+      - { name: ctaButtonLabel, label: Button-Text (unten), type: string }
+      - { name: ctaButtonHref, label: Button-Link (unten), type: string }
       - name: program
         label: Jahresprogramm (PDF-Download)
         type: object

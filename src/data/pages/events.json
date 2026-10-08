@@ -1,10 +1,10 @@
 {
   "hero": {
-    "eyebrow": "Events",
-    "title": "Termine",
-    "text": "Unser Clubkalender – von der Saisoneröffnung bis zur Abschlussfahrt."
+    "eyebrow": "Nächster Termin",
+    "title": "Termine"
   },
-  "note": "Alle Termine ohne Gewähr. Mitglieder erhalten die Details jeweils per WhatsApp.",
+  "listHeading": "Weitere Termine",
+  "note": "Alle Termine ohne Gewähr. Details und Treffpunkte gibt es jeweils per WhatsApp.",
   "ctaButtonLabel": "Kontakt aufnehmen →",
   "ctaButtonHref": "/kontakt/",
   "program": {
