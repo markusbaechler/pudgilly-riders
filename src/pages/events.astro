@@ -1,9 +1,23 @@
 ---
+import { statSync } from 'node:fs';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import EventCard from '../components/EventCard.astro';
 import { upcomingEvents, pastEvents } from '../data/events';
 import page from '../data/pages/events.json';
+
+// Jahresprogramm-PDF: Pfad und Texte kommen aus dem CMS («Seite · Events»),
+// die Dateigrösse lesen wir beim Build direkt aus public/.
+const program = page.program;
+let programSize = '';
+if (program?.file) {
+  try {
+    const bytes = statSync(new URL('../../public' + program.file, import.meta.url)).size;
+    programSize = `${Math.round(bytes / 1024)} KB`;
+  } catch {
+    programSize = '';
+  }
+}
 ---
 
 <BaseLayout title="Events" description="Termine der Pudgilly Riders: Ausfahrten, Treffen, Kurse und Feste im Clubjahr.">
@@ -15,6 +29,24 @@ import page from '../data/pages/events.json';
 
   <section class="section">
     <div class="container">
+      {
+        program?.file && (
+          <aside class="program" aria-labelledby="program-heading">
+            <div>
+              <span class="eyebrow">Zum Ausdrucken</span>
+              <h2 id="program-heading">{program.heading}</h2>
+              <p>{program.text}</p>
+            </div>
+            <div class="program__action">
+              <a href={program.file} class="btn btn--primary" download>
+                {program.buttonLabel}
+              </a>
+              {programSize && <p class="program__meta">PDF · {programSize}</p>}
+            </div>
+          </aside>
+        )
+      }
+
       {
         upcomingEvents.length === 0 ? (
           <p class="event-list__empty">
@@ -55,6 +87,48 @@ import page from '../data/pages/events.json';
 </BaseLayout>
 
 <style>
+  .program {
+    display: grid;
+    gap: 1.5rem;
+    align-items: center;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    margin-bottom: 2.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background:
+      radial-gradient(circle at 90% 10%, rgba(255, 138, 30, 0.16), transparent 55%),
+      var(--color-surface);
+  }
+
+  @media (min-width: 760px) {
+    .program {
+      grid-template-columns: 1fr auto;
+      gap: 2.5rem;
+    }
+  }
+
+  .program h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 0.4rem;
+  }
+
+  .program p {
+    margin: 0;
+    color: var(--color-text-muted);
+    max-width: 55ch;
+  }
+
+  .program__action {
+    display: grid;
+    gap: 0.5rem;
+    justify-items: start;
+  }
+
+  .program__meta {
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
   .event-list {
     list-style: none;
     margin: 0;

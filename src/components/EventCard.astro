@@ -19,7 +19,7 @@ const { event, past = false } = Astro.props;
       {event.type}
     </span>
     <h3>{event.title}</h3>
-    <p class="event-card__loc">📍 {event.location}</p>
+    {event.location && <p class="event-card__loc">📍 {event.location}</p>}
     {event.description && <p>{event.description}</p>}
   </div>
 </li>

@@ -53,5 +53,112 @@
     "location": "Hüttikon",
     "type": "Treffen",
     "description": "Der inoffizielle Saisonabschluss mit Glühwein und Wurst vom Grill im Anschluss."
+  },
+  {
+    "date": "2027-01-23",
+    "title": "Fondueessen",
+    "location": "noch offen",
+    "type": "Fest",
+    "description": "Gemütlicher Winterabend im Club. Infos und Anmeldung via WhatsApp."
+  },
+  {
+    "date": "2027-02-19",
+    "title": "Moto Züri",
+    "location": "Zürich",
+    "type": "Treffen",
+    "description": "Infos und Treffpunkt via WhatsApp."
+  },
+  {
+    "date": "2027-02-27",
+    "title": "Papiersammlung",
+    "location": "Hüttikon",
+    "type": "Treffen",
+    "description": "An- und Abmeldung via WhatsApp."
+  },
+  {
+    "date": "2027-04-03",
+    "title": "Warm up",
+    "location": "noch offen",
+    "type": "Ausfahrt",
+    "description": "Erste Ausfahrt der Saison. Infos und Treffpunkt via WhatsApp."
+  },
+  {
+    "date": "2027-05-15",
+    "endDate": "2027-05-17",
+    "title": "Elsass",
+    "location": "Elsass",
+    "type": "Ausfahrt",
+    "description": "Dreitägige Tour ins Elsass. Infos und Anmeldung via WhatsApp."
+  },
+  {
+    "date": "2027-05-28",
+    "title": "Papiersammlung",
+    "location": "Hüttikon",
+    "type": "Treffen",
+    "description": "An- und Abmeldung via WhatsApp."
+  },
+  {
+    "date": "2027-06-11",
+    "title": "Feierabendrunde",
+    "location": "Spontan nach Lust und Wetter",
+    "type": "Ausfahrt",
+    "description": "Infos und Treffpunkt via WhatsApp."
+  },
+  {
+    "date": "2027-07-03",
+    "title": "Bündnerrunde",
+    "location": "Graubünden",
+    "type": "Ausfahrt",
+    "description": "Infos und Treffpunkt via WhatsApp."
+  },
+  {
+    "date": "2027-08-05",
+    "title": "Feierabendrunde",
+    "location": "Spontan nach Lust und Wetter",
+    "type": "Ausfahrt",
+    "description": "Infos und Treffpunkt via WhatsApp."
+  },
+  {
+    "date": "2027-09-03",
+    "title": "Papiersammlung",
+    "location": "Hüttikon",
+    "type": "Treffen",
+    "description": "An- und Abmeldung via WhatsApp."
+  },
+  {
+    "date": "2027-09-09",
+    "title": "Vorstandssitzung",
+    "location": "noch offen",
+    "type": "Treffen"
+  },
+  {
+    "date": "2027-09-11",
+    "endDate": "2027-09-18",
+    "title": "Wochentour Korsika",
+    "location": "Korsika",
+    "type": "Ausfahrt",
+    "description": "Achttägige Tour nach Korsika. Infos und Anmeldung via WhatsApp."
+  },
+  {
+    "date": "2027-10-02",
+    "endDate": "2027-10-03",
+    "title": "Schlussfahrt",
+    "location": "noch offen",
+    "type": "Ausfahrt",
+    "description": "Letzte gemeinsame Runde der Saison. Infos folgen via WhatsApp."
+  },
+  {
+    "date": "2027-11-05",
+    "title": "Generalversammlung",
+    "location": "noch offen",
+    "type": "Treffen",
+    "description": "Einladung folgt per WhatsApp."
+  },
+  {
+    "date": "2027-12-04",
+    "title": "Papiersammlung mit Glühwein",
+    "location": "Hüttikon",
+    "type": "Treffen",
+    "description": "Der inoffizielle Saisonabschluss mit Glühwein und Wurst vom Grill im Anschluss."
   }
 ]

@@ -20,6 +20,11 @@ content:
         type: date
         options:
           format: yyyy-MM-dd
+      - name: endDate
+        label: Bis-Datum (nur bei mehrtägigen Terminen)
+        type: date
+        options:
+          format: yyyy-MM-dd
       - { name: title, label: Titel, type: string }
       - { name: location, label: Ort, type: string }
       - name: type
@@ -215,6 +220,17 @@ content:
       - { name: note, label: Hinweis unten, type: text }
       - { name: ctaButtonLabel, label: Button-Text, type: string }
       - { name: ctaButtonHref, label: Button-Link, type: string }
+      - name: program
+        label: Jahresprogramm (PDF-Download)
+        type: object
+        fields:
+          - { name: heading, label: Überschrift, type: string }
+          - { name: text, label: Text, type: text }
+          - { name: buttonLabel, label: Button-Text, type: string }
+          - name: file
+            label: Pfad zur PDF-Datei
+            type: string
+            description: Datei liegt in public/downloads, z. B. /downloads/jahresprogramm-2027.pdf
 
   - name: page_contact
     label: Seite · Kontakt (Texte)

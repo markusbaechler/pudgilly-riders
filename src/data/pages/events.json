@@ -1,10 +1,16 @@
 {
   "hero": {
     "eyebrow": "Events",
-    "title": "Termine 2026",
+    "title": "Termine",
     "text": "Unser Clubkalender – von der Saisoneröffnung bis zur Abschlussfahrt."
   },
   "note": "Alle Termine ohne Gewähr. Mitglieder erhalten die Details jeweils per WhatsApp.",
   "ctaButtonLabel": "Kontakt aufnehmen →",
-  "ctaButtonHref": "/kontakt/"
+  "ctaButtonHref": "/kontakt/",
+  "program": {
+    "heading": "Jahresprogramm 2027",
+    "text": "Alle Clubtermine 2027 auf einer Seite – zum Ausdrucken oder fürs Handy.",
+    "buttonLabel": "PDF herunterladen",
+    "file": "/downloads/jahresprogramm-2027.pdf"
+  }
 }
