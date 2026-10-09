@@ -22,7 +22,8 @@
     "image": "/galerie/malcantone_.png"
   },
   {
-    "title": "bündnerrunde",
+    "slug": "buendnerrunde",
+    "title": "Bündnerrunde",
     "region": "Graubünden",
     "level": "mittel",
     "description": "Lenzerheide, Julier, Bernina, Forcola di Livigno, Pso di Foscagno, Umbrailpass, Ofenpass, Flüelapass, Wolfgang",
