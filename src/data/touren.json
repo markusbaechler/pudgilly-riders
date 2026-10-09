@@ -20,5 +20,14 @@
     "dauer": "gemütliche Tages- oder sportliche Halbtagesrunde",
     "fahrzeit": "3.5",
     "image": "/galerie/malcantone_.png"
+  },
+  {
+    "title": "bündnerrunde",
+    "region": "Graubünden",
+    "level": "mittel",
+    "description": "Lenzerheide, Julier, Bernina, Forcola di Livigno, Pso di Foscagno, Umbrailpass, Ofenpass, Flüelapass, Wolfgang",
+    "planerLink": "https://pudgilly.ch/planer/#r=eyJ2IjoxLCJ3IjpbWzkuNTUxMzcsNDYuOTcxNDgsImsiLDAsIiIsIiIsIiJdLFs5LjUyNjQ5LDQ2Ljg1NDc1LCJzIiwwLCJDaHVyLCBHcmF1YsO8bmRlbiwgU2Nod2VpeiIsIiIsIiJdLFs5LjU1ODQ0LDQ2LjcyODAzLCJrIiwwLCJMZW56ZXJoZWlkZSwgVmF6L09iZXJ2YXosIEdyYXViw7xuZGVuLCBTY2h3ZWl6IiwiIiwiIl0sWzkuNzI4MTUsNDYuNDcyMjEsImsiLDAsIkp1bGllcnBhc3MsIFN1cnNlcywgR3JhdWLDvG5kZW4sIFNjaHdlaXoiLCIiLCIiXSxbMTAuMDExNDgsNDYuNDE1NzgsImsiLDAsIkJlcm5pbmFwYXNzLCBQb250cmVzaW5hLCBHcmF1YsO8bmRlbiwgU2Nod2VpeiIsIiIsIiJdLFsxMC40MzMxOCw0Ni41NDE2NSwiayIsMCwiVW1icmFpbHBhc3MsIE3DvG5zdGVydGFsLCBHcmF1YsO8bmRlbiwgU2Nod2VpeiIsIiIsIiJdLFs5Ljk1MDI4LDQ2Ljc0NzUsImsiLDAsIkZsw7xlbGFwYXNzLCBaZXJuZXosIEdyYXViw7xuZGVuLCBTY2h3ZWl6IiwiIiwiIl0sWzkuNzcyOTksNDYuOTEzNzgsImsiLDAsIkvDvGJsaXMsIEdyYXViw7xuZGVuLCBTY2h3ZWl6IiwiIiwiIl0sWzkuNTUxMjQsNDYuOTcxNTcsInMiLDAsIiIsIiIsIiJdXSwicyI6WzMyMiwzNTRdfQ",
+    "fahrzeit": "6",
+    "image": "/galerie/Buendnerrunde.jpg"
   }
 ]
