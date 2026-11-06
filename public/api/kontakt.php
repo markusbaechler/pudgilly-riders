@@ -63,7 +63,9 @@ if ($count > MAX_MAILS_PER_HOUR) {
     finish('fehler');
 }
 
-$subject = '=?UTF-8?B?' . base64_encode("Kontakt: $topic ($name)") . '?=';
+// Uhrzeit im Betreff: Gmail fasst sonst E-Mails mit gleichem Betreff zu einer Konversation zusammen.
+date_default_timezone_set('Europe/Zurich');
+$subject = '=?UTF-8?B?' . base64_encode("Kontakt: $topic ($name), " . date('d.m.Y H:i:s')) . '?=';
 $body = "Name: $name\nE-Mail: $email\nBetreff: $topic\n\n"
     . wordwrap($message, 900, "\n", false)
     . "\n\nGesendet von pudgilly.ch/kontakt. Mit «Antworten» schreibst du direkt an diese Person.\n";

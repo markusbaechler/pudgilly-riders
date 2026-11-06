@@ -57,7 +57,8 @@ if ($count > MAX_MAILS_PER_HOUR) {
 }
 
 date_default_timezone_set('Europe/Zurich');
-$subject = '=?UTF-8?B?' . base64_encode("Mitgliederbeitrag: $name") . '?=';
+// Uhrzeit im Betreff: Gmail fasst sonst E-Mails mit gleichem Betreff zu einer Konversation zusammen.
+$subject = '=?UTF-8?B?' . base64_encode("Mitgliederbeitrag: $name, " . date('d.m.Y H:i:s')) . '?=';
 $body = "Name: $name\n"
     . 'Zahlung gestartet: ' . date('d.m.Y, H:i:s') . " Uhr\n\n"
     . "Das ist keine Zahlungsbestätigung. Bitte mit Zeitpunkt und Betrag im RaiseNow Hub abgleichen.\n\n"
