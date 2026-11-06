@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import page from '../data/pages/mitgliederbeitrag.json';
+import contact from '../data/pages/contact.json';
 
 // Der QR-Code enthält keinen Weblink. Der Button erscheint deshalb nur, wenn im
 // CMS ein echter PayLink aus dem RaiseNow Hub eingetragen ist.
@@ -14,48 +15,130 @@ const hasPaymentLink = paymentLink.startsWith('https://');
 
   <section class="section">
     <div class="container fee">
-      <!-- Übergangslösung: «TWINT Payments» ist anonym. Hinweis entfernen, sobald
-           der PayLink auf «TWINT Payments Plus» zeigt und den Namen erfasst. -->
-      <p class="fee__note">
-        <strong>Wichtig:</strong> Die Zahlung enthält deinen Namen nicht. Bitte teile uns nach dem
-        Bezahlen über das <a href="/kontakt/">Kontaktformular</a> mit, von wem sie stammt.
-      </p>
-
       <div class="fee__pay">
-        {hasPaymentLink && <a href={paymentLink} class="btn btn--primary">Mit TWINT bezahlen</a>}
+        <!-- «TWINT Payments» ist anonym. Darum schickt die Seite den Namen vor der
+             Zahlung per Web3Forms an den Club. Zuordnung: Zeitpunkt und Betrag im Hub. -->
+        <form id="fee-form" class="fee__form" data-access-key={contact.web3formsKey}>
+          <label for="fee-name">Dein Vor- und Nachname</label>
+          <input
+            id="fee-name"
+            name="name"
+            type="text"
+            required
+            autocomplete="name"
+            pattern={String.raw`\s*\S+\s+\S.*`}
+            title="Bitte Vor- und Nachname eingeben"
+          />
+          <!-- Honeypot gegen Spam – für Menschen unsichtbar -->
+          <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" />
+          <button type="submit" class="btn btn--primary">Weiter zur Zahlung</button>
+        </form>
 
-        <!-- Originalbild aus public/: Astro lässt es beim Build unverändert. Der
-             RaiseNow-Styleguide verbietet Zuschneiden, Verzerren und Effekte. -->
-        <img
-          src="/twint/pudgilly-riders-mcpr-qr.png"
-          width="710"
-          height="1180"
-          alt="TWINT-QR-Code von Pudgilly Riders (MCPR)"
-        />
+        <noscript>
+          {hasPaymentLink && <a href={paymentLink} class="btn btn--primary">Mit TWINT bezahlen</a>}
+          <p class="fee__note">Melde dich nach dem Bezahlen bitte über die <a href="/kontakt/">Kontaktseite</a>.</p>
+        </noscript>
+
+        <div id="fee-payment" class="fee__payment" hidden>
+          <p id="fee-sent" class="fee__note" role="status" hidden>
+            Danke, <span id="fee-sent-name"></span>. Dein Name ist übermittelt. Bezahle jetzt hier:
+          </p>
+          <p id="fee-failed" class="fee__note" role="status" hidden>
+            Dein Name konnte nicht übermittelt werden. Du kannst trotzdem bezahlen. Melde dich danach
+            bitte über die <a href="/kontakt/">Kontaktseite</a>.
+          </p>
+
+          {hasPaymentLink && <a href={paymentLink} class="btn btn--primary">Mit TWINT bezahlen</a>}
+
+          <!-- Originalbild aus public/: Astro lässt es beim Build unverändert. Der
+               RaiseNow-Styleguide verbietet Zuschneiden, Verzerren und Effekte. -->
+          <img
+            src="/twint/pudgilly-riders-mcpr-qr.png"
+            width="710"
+            height="1180"
+            alt="TWINT-QR-Code von Pudgilly Riders (MCPR)"
+          />
+        </div>
       </div>
 
       <div class="fee__steps">
         <h2>So bezahlst du</h2>
 
-        <h3>Am Handy</h3>
+        <h3>1. Namen eingeben</h3>
         <p>
-          {hasPaymentLink && 'Tippe auf «Mit TWINT bezahlen» und gib auf der Bezahlseite den Betrag ein.'}
-          Den QR-Code zeigen wir am Handy nicht, weil du ihn mit demselben Gerät nicht scannen kannst.
-          {
-            hasPaymentLink
-              ? 'Du kannst auch den ausgedruckten Code an der GV nutzen.'
-              : 'Nutze stattdessen den ausgedruckten Code an der GV oder öffne diese Seite auf einem zweiten Gerät.'
-          }
+          TWINT übermittelt uns bei der Zahlung keinen Namen. Damit wir deinen Beitrag zuordnen können,
+          schickt diese Seite deinen Namen per E-Mail an uns.
         </p>
 
-        <h3>Am Computer oder Tablet</h3>
-        <p>Dort erscheint auf dieser Seite auch der QR-Code. Scanne ihn mit der TWINT-App auf deinem Handy.</p>
+        <h3>2. Mit TWINT bezahlen</h3>
+        <p>
+          {hasPaymentLink && 'Am Handy tippst du auf «Mit TWINT bezahlen» und gibst auf der Bezahlseite den Betrag ein.'}
+          Den QR-Code zeigen wir am Handy nicht, weil du ihn mit demselben Gerät nicht scannen kannst.
+          Am Computer oder Tablet erscheint er nach dem Namen. Scanne ihn mit der TWINT-App auf deinem Handy.
+        </p>
+
+        <h3>An der GV</h3>
+        <p>
+          Du kannst auch den ausgedruckten Code nutzen. Sag uns dort bitte kurz Bescheid, damit wir die
+          Zahlung zuordnen können.
+        </p>
 
         <p class="fee__contact">Fragen zum Beitrag? <a href="/kontakt/">Schreib uns</a>.</p>
       </div>
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('#fee-form');
+
+  async function sendName(fields: Record<string, FormDataEntryValue>, name: string, accessKey = '') {
+    // Eine Störung beim Versand darf die Zahlung nie blockieren: nach 8 Sekunden geht es weiter.
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 8000);
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          ...fields,
+          name,
+          access_key: accessKey,
+          from_name: 'Pudgilly Riders Website',
+          subject: `Mitgliederbeitrag: ${name}`,
+          message: `Zahlung gestartet am ${new Date().toLocaleString('de-CH')}`,
+        }),
+        signal: controller.signal,
+      });
+      const result = await response.json();
+      return response.ok && result.success === true;
+    } catch {
+      return false;
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const fields = Object.fromEntries(new FormData(form));
+    const name = String(fields.name).trim();
+    const button = form.querySelector('button');
+    if (button) button.disabled = true;
+
+    const sent = await sendName(fields, name, form.dataset.accessKey);
+
+    const sentNote = document.querySelector<HTMLElement>('#fee-sent');
+    const failedNote = document.querySelector<HTMLElement>('#fee-failed');
+    const sentName = document.querySelector<HTMLElement>('#fee-sent-name');
+    const payment = document.querySelector<HTMLElement>('#fee-payment');
+    if (sentName) sentName.textContent = name;
+    if (sentNote) sentNote.hidden = !sent;
+    if (failedNote) failedNote.hidden = sent;
+    if (payment) payment.hidden = false;
+    form.hidden = true;
+  });
+</script>
 
 <style>
   .fee {
@@ -72,8 +155,54 @@ const hasPaymentLink = paymentLink.startsWith('https://');
     }
   }
 
+  .fee__pay {
+    display: grid;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 340px;
+    justify-self: center;
+  }
+
+  .fee__form,
+  .fee__payment {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .fee__form[hidden],
+  .fee__payment[hidden] {
+    display: none;
+  }
+
+  .fee__form label {
+    margin-bottom: -0.85rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+
+  .fee__form input[type='text'] {
+    width: 100%;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border-strong);
+    border-radius: 8px;
+    padding: 0.75rem 0.9rem;
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color var(--transition);
+  }
+
+  .fee__form input[type='text']:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  .fee__form button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+  }
+
   .fee__note {
-    grid-column: 1 / -1;
     margin: 0;
     padding: 1rem 1.25rem;
     border: 1px solid var(--color-accent);
@@ -86,15 +215,7 @@ const hasPaymentLink = paymentLink.startsWith('https://');
     text-underline-offset: 0.15em;
   }
 
-  .fee__pay {
-    display: grid;
-    gap: 1.25rem;
-    width: 100%;
-    max-width: 340px;
-    justify-self: center;
-  }
-
-  .fee__pay img {
+  .fee__payment img {
     width: 100%;
     height: auto;
   }
@@ -102,7 +223,7 @@ const hasPaymentLink = paymentLink.startsWith('https://');
   /* Am Handy (auch quer) nur der Button: So beschreibt es RaiseNow, und auf
      demselben Gerät lässt sich der Code ohnehin nicht scannen. */
   @media (max-width: 767px), (max-height: 500px) and (pointer: coarse) {
-    .fee__pay img {
+    .fee__payment img {
       display: none;
     }
   }
