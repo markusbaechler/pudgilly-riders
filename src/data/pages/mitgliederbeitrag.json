@@ -1,0 +1,8 @@
+{
+  "hero": {
+    "eyebrow": "Mitglieder",
+    "title": "Mitgliederbeitrag",
+    "text": "Bezahle deinen Beitrag mit TWINT, hier auf der Seite oder mit dem ausgedruckten Code an der GV."
+  },
+  "paymentLink": "https://pay.raisenow.io/rcnbb"
+}

@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import page from '../data/pages/mitgliederbeitrag.json';
+
+// Der QR-Code enthält keinen Weblink. Der Button erscheint deshalb nur, wenn im
+// CMS ein echter PayLink aus dem RaiseNow Hub eingetragen ist.
+const paymentLink = page.paymentLink?.trim() ?? '';
+const hasPaymentLink = paymentLink.startsWith('https://');
+---
+
+<BaseLayout title="Mitgliederbeitrag" description="Mitgliederbeitrag der Pudgilly Riders mit TWINT bezahlen.">
+  <PageHero eyebrow={page.hero.eyebrow} title={page.hero.title} text={page.hero.text} />
+
+  <section class="section">
+    <div class="container fee">
+      <div class="fee__pay">
+        {hasPaymentLink && <a href={paymentLink} class="btn btn--primary">Mit TWINT bezahlen</a>}
+
+        <!-- Originalbild aus public/: Astro lässt es beim Build unverändert. Der
+             RaiseNow-Styleguide verbietet Zuschneiden, Verzerren und Effekte. -->
+        <img
+          src="/twint/pudgilly-riders-mcpr-qr.png"
+          width="710"
+          height="1180"
+          alt="TWINT-QR-Code von Pudgilly Riders (MCPR)"
+        />
+      </div>
+
+      <div class="fee__steps">
+        <h2>So bezahlst du</h2>
+
+        <h3>Nur mit dem Handy</h3>
+        <p>
+          {hasPaymentLink && 'Tippe auf «Mit TWINT bezahlen» und gib auf der Bezahlseite den Betrag ein.'}
+          Den QR-Code auf dem eigenen Bildschirm kannst du mit demselben Handy nicht scannen.
+          {
+            hasPaymentLink
+              ? 'Alternativ nutzt du den ausgedruckten Code an der GV.'
+              : 'Nutze stattdessen den ausgedruckten Code an der GV oder öffne diese Seite auf einem zweiten Gerät.'
+          }
+        </p>
+
+        <h3>Mit zweitem Gerät</h3>
+        <p>Öffne die TWINT-App auf deinem Handy und scanne den QR-Code auf dem anderen Bildschirm.</p>
+
+        <p class="fee__contact">Fragen zum Beitrag? <a href="/kontakt/">Schreib uns</a>.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .fee {
+    display: grid;
+    gap: 2.5rem;
+    max-width: 960px;
+  }
+
+  @media (min-width: 820px) {
+    .fee {
+      grid-template-columns: 340px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+  }
+
+  .fee__pay {
+    display: grid;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 340px;
+    justify-self: center;
+  }
+
+  .fee__pay img {
+    width: 100%;
+    height: auto;
+  }
+
+  .fee__steps h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .fee__steps h3 {
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+  }
+
+  .fee__steps p {
+    color: var(--color-text-muted);
+  }
+
+  .fee__steps .fee__contact {
+    margin: 2rem 0 0;
+  }
+</style>

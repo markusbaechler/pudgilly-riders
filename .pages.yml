@@ -287,6 +287,23 @@ content:
           - { name: text, label: Untertitel, type: text }
       - { name: note, label: Hinweis unter der Liste, type: text }
 
+  - name: page_mitgliederbeitrag
+    label: Seite · Mitgliederbeitrag
+    type: file
+    path: src/data/pages/mitgliederbeitrag.json
+    fields:
+      - name: hero
+        label: Hero (oben)
+        type: object
+        fields:
+          - { name: eyebrow, label: Kleiner Text, type: string }
+          - { name: title, label: Titel, type: string }
+          - { name: text, label: Untertitel, type: text }
+      - name: paymentLink
+        label: TWINT-Zahlungslink (PayLink)
+        type: string
+        description: Der PayLink aus dem RaiseNow Hub (beginnt mit https://). Dahin führt der Button «Mit TWINT bezahlen». Leer lassen = kein Button.
+
   - name: page_contact
     label: Seite · Kontakt (Texte)
     type: file
