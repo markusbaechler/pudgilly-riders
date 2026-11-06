@@ -2,7 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import page from '../data/pages/mitgliederbeitrag.json';
-import contact from '../data/pages/contact.json';
 
 // Der QR-Code enthält keinen Weblink. Der Button erscheint deshalb nur, wenn im
 // CMS ein echter PayLink aus dem RaiseNow Hub eingetragen ist.
@@ -16,9 +15,9 @@ const hasPaymentLink = paymentLink.startsWith('https://');
   <section class="section">
     <div class="container fee">
       <div class="fee__pay">
-        <!-- «TWINT Payments» ist anonym. Darum schickt die Seite den Namen vor der
-             Zahlung per Web3Forms an den Club. Zuordnung: Zeitpunkt und Betrag im Hub. -->
-        <form id="fee-form" class="fee__form" data-access-key={contact.web3formsKey}>
+        <!-- «TWINT Payments» ist anonym. Darum schickt die Seite den Namen vor der Zahlung
+             über public/api/beitrag-name.php an den Club. Zuordnung: Zeitpunkt und Betrag im Hub. -->
+        <form id="fee-form" class="fee__form">
           <label for="fee-name">Dein Vor- und Nachname</label>
           <input
             id="fee-name"
@@ -92,22 +91,15 @@ const hasPaymentLink = paymentLink.startsWith('https://');
 <script>
   const form = document.querySelector<HTMLFormElement>('#fee-form');
 
-  async function sendName(fields: Record<string, FormDataEntryValue>, name: string, accessKey = '') {
+  async function sendName(fields: Record<string, FormDataEntryValue>, name: string) {
     // Eine Störung beim Versand darf die Zahlung nie blockieren: nach 8 Sekunden geht es weiter.
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 8000);
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('/api/beitrag-name.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          ...fields,
-          name,
-          access_key: accessKey,
-          from_name: 'Pudgilly Riders Website',
-          subject: `Mitgliederbeitrag: ${name}`,
-          message: `Zahlung gestartet am ${new Date().toLocaleString('de-CH')}`,
-        }),
+        body: JSON.stringify({ ...fields, name }),
         signal: controller.signal,
       });
       const result = await response.json();
@@ -126,7 +118,7 @@ const hasPaymentLink = paymentLink.startsWith('https://');
     const button = form.querySelector('button');
     if (button) button.disabled = true;
 
-    const sent = await sendName(fields, name, form.dataset.accessKey);
+    const sent = await sendName(fields, name);
 
     const sentNote = document.querySelector<HTMLElement>('#fee-sent');
     const failedNote = document.querySelector<HTMLElement>('#fee-failed');
