@@ -30,19 +30,19 @@ const hasPaymentLink = paymentLink.startsWith('https://');
       <div class="fee__steps">
         <h2>So bezahlst du</h2>
 
-        <h3>Nur mit dem Handy</h3>
+        <h3>Am Handy</h3>
         <p>
           {hasPaymentLink && 'Tippe auf «Mit TWINT bezahlen» und gib auf der Bezahlseite den Betrag ein.'}
-          Den QR-Code auf dem eigenen Bildschirm kannst du mit demselben Handy nicht scannen.
+          Den QR-Code zeigen wir am Handy nicht, weil du ihn mit demselben Gerät nicht scannen kannst.
           {
             hasPaymentLink
-              ? 'Alternativ nutzt du den ausgedruckten Code an der GV.'
+              ? 'Du kannst auch den ausgedruckten Code an der GV nutzen.'
               : 'Nutze stattdessen den ausgedruckten Code an der GV oder öffne diese Seite auf einem zweiten Gerät.'
           }
         </p>
 
-        <h3>Mit zweitem Gerät</h3>
-        <p>Öffne die TWINT-App auf deinem Handy und scanne den QR-Code auf dem anderen Bildschirm.</p>
+        <h3>Am Computer oder Tablet</h3>
+        <p>Dort erscheint auf dieser Seite auch der QR-Code. Scanne ihn mit der TWINT-App auf deinem Handy.</p>
 
         <p class="fee__contact">Fragen zum Beitrag? <a href="/kontakt/">Schreib uns</a>.</p>
       </div>
@@ -76,6 +76,14 @@ const hasPaymentLink = paymentLink.startsWith('https://');
   .fee__pay img {
     width: 100%;
     height: auto;
+  }
+
+  /* Am Handy (auch quer) nur der Button: So beschreibt es RaiseNow, und auf
+     demselben Gerät lässt sich der Code ohnehin nicht scannen. */
+  @media (max-width: 767px), (max-height: 500px) and (pointer: coarse) {
+    .fee__pay img {
+      display: none;
+    }
   }
 
   .fee__steps h2 {
