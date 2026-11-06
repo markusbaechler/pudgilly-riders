@@ -14,6 +14,13 @@ const hasPaymentLink = paymentLink.startsWith('https://');
 
   <section class="section">
     <div class="container fee">
+      <!-- Übergangslösung: «TWINT Payments» ist anonym. Hinweis entfernen, sobald
+           der PayLink auf «TWINT Payments Plus» zeigt und den Namen erfasst. -->
+      <p class="fee__note">
+        <strong>Wichtig:</strong> Die Zahlung enthält deinen Namen nicht. Bitte teile uns nach dem
+        Bezahlen über das <a href="/kontakt/">Kontaktformular</a> mit, von wem sie stammt.
+      </p>
+
       <div class="fee__pay">
         {hasPaymentLink && <a href={paymentLink} class="btn btn--primary">Mit TWINT bezahlen</a>}
 
@@ -63,6 +70,20 @@ const hasPaymentLink = paymentLink.startsWith('https://');
       gap: 4rem;
       align-items: start;
     }
+  }
+
+  .fee__note {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-accent-soft);
+  }
+
+  .fee__note a {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
   }
 
   .fee__pay {
