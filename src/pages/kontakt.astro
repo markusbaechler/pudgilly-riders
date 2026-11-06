@@ -22,6 +22,18 @@ const contact = [
   />
 
   <section class="section">
+    <!-- Rückmeldung nach dem Absenden: zuoberst, damit sie auch am Handy sofort sichtbar ist -->
+    <div class="container">
+      <p id="gesendet" class="contact-form__status">
+        Danke! Deine Nachricht ist unterwegs zu uns.
+      </p>
+      <p id="fehler" class="contact-form__status">
+        Deine Nachricht konnte nicht gesendet werden. Mit der Zurück-Taste kommst du zu deinem Text.
+        Du erreichst uns auch per <a href={whatsappHref} target="_blank" rel="noopener">WhatsApp</a>
+        oder <a href={`mailto:${site.email}`}>E-Mail</a>.
+      </p>
+    </div>
+
     <div class="container contact-grid">
       <!-- Kontaktinfos -->
       <aside class="contact-info">
@@ -52,15 +64,12 @@ const contact = [
         </p>
       </aside>
 
-      <!-- Formular (Web3Forms – kostenloser Versand ohne eigenen Server) -->
+      <!-- Formular: public/api/kontakt.php schickt es per E-Mail und leitet auf #gesendet oder #fehler zurück -->
       <form
         class="contact-form"
-        action="https://api.web3forms.com/submit"
+        action="/api/kontakt.php"
         method="POST"
       >
-        <!-- Kostenloser Access Key von web3forms.com (im CMS unter „Seite · Kontakt" pflegbar) -->
-        <input type="hidden" name="access_key" value={page.web3formsKey} />
-        <input type="hidden" name="from_name" value="Pudgilly Riders Website" />
         <!-- Honeypot gegen Spam – für Menschen unsichtbar -->
         <input
           type="checkbox"
@@ -92,7 +101,7 @@ const contact = [
 
         <div class="field">
           <label for="message">Nachricht</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
+          <textarea id="message" name="message" rows="5" required maxlength="5000"></textarea>
         </div>
 
         <button type="submit" class="btn btn--primary">Nachricht senden →</button>
@@ -158,6 +167,26 @@ const contact = [
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     padding: 2rem;
+  }
+
+  /* Erscheint nur, wenn die Adresse auf #gesendet oder #fehler endet */
+  .contact-form__status {
+    display: none;
+    margin: 0 0 2.5rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-accent-soft);
+    scroll-margin-top: 110px;
+  }
+
+  .contact-form__status:target {
+    display: block;
+  }
+
+  .contact-form__status a {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
   }
 
   .contact-form__note {
